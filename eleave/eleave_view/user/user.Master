@@ -1,0 +1,1104 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="user.master.cs" Inherits="eleave_view.user.user" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>e-leave</title>
+    <script type="text/javascript">
+        function preventBack() {
+
+            window.history.forward();
+        }
+
+        setTimeout("preventBack()", 0);
+
+        window.onunload = function () {
+            null
+        };
+
+    </script>
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon" />
+    <link href="../assets/plugins/swal/sweetalert.css" rel="stylesheet" type="text/css" />
+    <script src="../assets/plugins/swal/sweetalert.min.js" type="text/javascript"></script>
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/fonts/style.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main-responsive.css" />
+    <link rel="stylesheet" href="../assets/plugins/iCheck/skins/all.css" />
+    <link rel="stylesheet" href="../assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../assets/css/theme_light.css" id="skin_color" />
+    <!--[if IE 7]>
+		<link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+    <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="../assets/plugins/fullcalendar/fullcalendar/fullcalendar.css" />
+    <link href="../assets/plugins/circliful/font-awesome.min.css" rel="stylesheet" />
+    <link href="../assets/plugins/circliful/jquery.circliful.css" rel="stylesheet" />
+    <link href="../assets/plugins/datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/DataTables/media/css/DT_bootstrap.css" rel="stylesheet" />
+    <link href="../assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" />
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('../assets/images/double_loader.gif') 50% 50% no-repeat rgb(249,249,249);
+        }
+    </style>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut(5000);
+        })
+    </script>
+    <script type="text/css">
+        .chosen-disabled {
+         opacity: 1 !important; 
+         background-color: #FFF !important;
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="browser_back()">
+    <!-- Loading Container -->
+    <%--    <div class="loader"></div>--%>
+    <!--  /Loading Container -->
+    <!-- start: HEADER -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <!-- start: TOP NAVIGATION CONTAINER -->
+        <div class="container">
+            <div class="navbar-header">
+                <!-- start: RESPONSIVE MENU TOGGLER -->
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="clip-list-2"></span>
+                </button>
+                <!-- end: RESPONSIVE MENU TOGGLER -->
+                <!-- start: LOGO -->
+                <a class="navbar-brand" href="dash.aspx">
+                    <i class="clip-IE"></i>
+                    <asp:Label ID="Label1" runat="server" Text="- Leave" ForeColor="#007AFF"></asp:Label>
+                </a>
+                <!-- end: LOGO -->
+            </div>
+            <div class="navbar-tools">
+                <!-- start: TOP NAVIGATION MENU -->
+                <ul class="nav navbar-right">
+                    <!-- start: TO-DO DROPDOWN -->
+                    <%--						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="clip-list-5"></i>
+								<span class="badge"> 12</span>
+							</a>
+						</li>--%>
+                    <!-- end: TO-DO DROPDOWN-->
+                    <!-- start: NOTIFICATION DROPDOWN -->
+                    <li class="dropdown">
+                        <a href="listleaves.aspx" class="dropdown-toggle">
+                            <i class="icon-bell-alt"></i>
+                            <span class="badge" id="info"></span>
+                        </a>
+                    </li>
+                    <!-- end: NOTIFICATION DROPDOWN -->
+                    <!-- start: MESSAGE DROPDOWN -->
+                    <%--						<li class="dropdown">
+							<a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
+								<i class="clip-bubble-3"></i>
+								<span class="badge"> 9</span>
+							</a>
+						</li>--%>
+                    <!-- end: MESSAGE DROPDOWN -->
+                    <!-- start: USER DROPDOWN -->
+                    <li class="dropdown current-user">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <%--<img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">--%>
+                            <asp:Label ID="lbluname" CssClass="username" runat="server"></asp:Label>
+                            <i class="clip-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="update_profile.aspx">
+                                    <i class="clip-user-4 "></i>
+                                    &nbsp;Update Profile
+                                </a>
+                            </li>
+<%--                            <li>
+                                <a href="chg_pass.aspx">
+                                    <i class="clip-key"></i>
+                                    &nbsp;Change Password
+                                </a>
+                            </li>--%>
+                            <li>
+                                <a href="../Logout.aspx">
+                                    <i class="clip-exit"></i>
+                                    &nbsp;Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end: USER DROPDOWN -->
+                </ul>
+                <!-- end: TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- end: TOP NAVIGATION CONTAINER -->
+    </div>
+    <!-- end: HEADER -->
+    <!-- start: MAIN CONTAINER -->
+    <div class="main-container">
+        <div class="navbar-content">
+            <!-- start: SIDEBAR -->
+            <div class="main-navigation navbar-collapse collapse">
+                <!-- start: MAIN MENU TOGGLER BUTTON -->
+                <div class="navigation-toggler">
+                    <i class="clip-chevron-left"></i>
+                    <i class="clip-chevron-right"></i>
+                </div>
+                <!-- end: MAIN MENU TOGGLER BUTTON -->
+                <!-- start: MAIN NAVIGATION MENU -->
+                <ul class="main-navigation-menu">
+                    <li id="dash" runat="server">
+                        <a href="dash.aspx"><i class="clip-home-3"></i>
+                            <span class="title">Dashboard </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li id="leaves" runat="server">
+                        <a href="javascript:void(0)"><i class="clip-paperplane"></i>
+                            <span class="title">Leaves</span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li id="leaves1" runat="server">
+                                <a href="listleaves.aspx"><i class="clip-plus-circle-2"></i>
+                                    <span class="title">Apply </span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                            <li id="leaves2" runat="server">
+                                <a href="cancel.aspx"><i class="clip-minus-circle-2"></i>
+                                    <span class="title">Cancel Approved </span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <%--                    <li id="rpt" runat="server">
+                        <a href="#"><i class="clip-bars"></i>
+                            <span class="title">Reports </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>--%>
+                </ul>
+                <!-- end: MAIN NAVIGATION MENU -->
+            </div>
+            <!-- end: SIDEBAR -->
+        </div>
+        <!-- start: PAGE -->
+        <div class="main-content">
+            <!-- start: PANEL CONFIGURATION MODAL FORM -->
+            <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">Panel Configuration</h4>
+                        </div>
+                        <div class="modal-body">
+                            Here will be a configuration form
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+            <div class="container">
+                <!-- start: PAGE CONTENT -->
+                <form id="form1" runat="server">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </form>
+                <!-- end: PAGE CONTENT-->
+            </div>
+        </div>
+        <!-- end: PAGE -->
+    </div>
+    <!-- end: MAIN CONTAINER -->
+    <!-- start: FOOTER -->
+    <div class="footer clearfix">
+        <div class="footer-inner">
+            2015 &copy; <i class="clip-IE"></i>-Leave by <a href="http://summersoft.in/" target="_blank">summersoft pvt ltd.</a>
+        </div>
+        <div class="footer-items">
+            <span class="go-top"><i class="clip-chevron-up"></i></span>
+        </div>
+    </div>
+    <!-- end: FOOTER -->
+
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+		<script src="../assets/plugins/respond.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/excanvas.min.js" type="text/javascript"></script>
+		<![endif]-->
+    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/blockUI/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="../assets/plugins/iCheck/jquery.icheck.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js" type="text/javascript"></script>
+    <script src="../assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js" type="text/javascript"></script>
+    <script src="../assets/js/main.js" type="text/javascript"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <%--<link href="../assets/plugins/select2/select2.css" rel="stylesheet" type="text/css" />--%>
+    <script src="../assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/fullcalendar/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+    <script src="../assets/plugins/autosize/jquery.autosize.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/select2/select2.min.js" type="text/javascript"></script>
+    <script src="../assets/js/form-elements.js" type="text/javascript"></script>
+    <script src="../assets/plugins/circliful/jquery.circliful.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/loader/blockui.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/loader/pace.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/loader/progressbar.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../assets/js/leaveformval.js" type="text/javascript"></script>
+    <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/DataTables/media/js/DT_bootstrap.js"></script>
+    <script src="../assets/js/datatablesuser.js"></script>
+    <script src="../assets/plugins/timeout/session_timeout.min.js"></script>
+    <script src="../assets/js/updateprofile.js"></script>
+    <script src="../assets/js/changepasswordmd.js"></script>
+    <script src="../assets/plugins/jquery.pulsate/jquery.pulsate.min.js"></script>
+    <script src="../assets/js/leaveformmval.js"></script>
+    <script src="../assets/plugins/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="../assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="../assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/js/leaveformrval.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var startdate, enddate, chk;
+            Main.init();
+            setcolspan();
+            calendar();
+            leaves();
+            //datepick();
+            inputlimit();
+            inputlimit_add1();
+            inputlimit_add2();
+            hidefupload();
+            TableData.init();
+            updateAlerts();
+            //sessiontimeout();
+            $('#lblop').hide();
+        });
+        $(document).on("keydown", function (e) {
+            if (e.which === 8 && !$(e.target).is("input, textarea")) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function calendar() {
+            var data = {};
+            var rid = '<%= Session["region"] %>';
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: '{"rid":"' + rid + '"}',
+                url: "dash.aspx/GetEvents_calendar",
+                dataType: "json",
+                success: function (data) {
+                    //alert(data.d.length);
+                    var event1 = [];
+                    for (var i = 0; i < data.d.length; i++) {
+                        //alert(data.d[i].EventName);
+                        //alert(data.d[i].EventDate);
+                        //alert(data.d[i].color);
+                        event1.push({
+                            "title": data.d[i].EventName,
+                            "start": data.d[i].EventDate,
+                            "color": data.d[i].color
+                        });
+                    }
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    if (dd < 10) {
+                        dd = '0' + dd
+                    }
+
+                    if (mm < 10) {
+                        mm = '0' + mm
+                    }
+                    today = yyyy + '-' + mm + '-' + dd;
+
+                    /* initialize the calendar
+                    -----------------------------------------------------------------*/
+                    $('#calendar').fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,basicWeek,basicDay'
+                        },
+                        defaultDate: today,
+                        editable: true,
+                        droppable: true, // this allows things to be dropped onto the calendar
+                        eventLimit: true, // allow "more" link when too many events
+                        events: event1,
+                        eventClick: function (event) {
+                            $('#mbody').html(event.title);
+                            $('#mbody').css('color', event.color);
+                            $('#event-management').modal('show');
+                        }
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error calender");
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function leaves() {
+            //alert('leaves');
+            //var i = 0;
+            //console.log(i++);
+            var data = {};
+            var userid = '<%= Session["user_id"] %>';
+            data.uid = userid;
+            //alert(userid);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: '{"userid":"' + userid + '"}',
+                url: "dash.aspx/fetchleave",
+                dataType: "json",
+                success: function (data) {
+                    //alert(data.d.length);
+                    for (var i = 0; i < data.d.length; i++) {
+                        //alert(data.d[i].LeaveType);
+                        //alert(data.d[i].LeaveCount);
+                        if (data.d[i].LeaveType == "Annual") {
+                            // $('#ann').empty().removeData().attr('data-percent', data.d[i].LeaveCount).attr("data-text", data.d[i].LeaveCount).attr("data-info", data.d[i].LeaveType).attr("data-fgcolor", "#007AFF").circliful()
+                            $('#ann').empty();
+                            $('#ann').removeData();
+                            $('#ann').attr("data-percent", data.d[i].LeavePerc);
+                            $('#ann').attr("data-text", data.d[i].LeaveCount);
+                            $('#ann').attr("data-info", data.d[i].LeaveType);
+                            $('#ann').attr("data-fgcolor", "#007AFF");
+                            $('#ann').circliful();
+                        }
+                        else if (data.d[i].LeaveType == "Medical") {
+                            $('#med').empty();
+                            $('#med').removeData();
+                            $('#med').attr("data-percent", data.d[i].LeavePerc);
+                            $('#med').attr("data-text", data.d[i].LeaveCount);
+                            $('#med').attr("data-info", data.d[i].LeaveType);
+                            $('#med').attr("data-fgcolor", "#FF4C4C");
+                            $('#med').circliful();
+                        }
+                        else if (data.d[i].LeaveType == "Marriage") {
+                            $('#repl').empty();
+                            $('#repl').removeData();
+                            $('#repl').attr("data-percent", data.d[i].LeavePerc);
+                            $('#repl').attr("data-text", data.d[i].LeaveCount);
+                            $('#repl').attr("data-info", data.d[i].LeaveType);
+                            $('#repl').attr("data-fgcolor", "#339933");
+                            $('#repl').circliful();
+                        }
+                        else if (data.d[i].LeaveType == "Maternity") {
+                            $('#mrg').empty();
+                            $('#mrg').removeData();
+                            $('#mrg').attr("data-percent", data.d[i].LeavePerc);
+                            $('#mrg').attr("data-text", data.d[i].LeaveCount);
+                            $('#mrg').attr("data-info", data.d[i].LeaveType);
+                            $('#mrg').attr("data-fgcolor", "#FF8000");
+                            $('#mrg').circliful();
+                        }
+                        else if (data.d[i].LeaveType == "Paternity") {
+                            $('#pl').empty();
+                            $('#pl').removeData();
+                            $('#pl').attr("data-percent", data.d[i].LeavePerc);
+                            $('#pl').attr("data-text", data.d[i].LeaveCount);
+                            $('#pl').attr("data-info", data.d[i].LeaveType);
+                            $('#pl').attr("data-fgcolor", "#FF8000");
+                            $('#pl').circliful();
+                        }
+                        else {
+                            console.log('uncaught');
+                        }
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error leaves");
+                }
+            });
+        }
+        setInterval(leaves, 10000); // 10 seconds
+    </script>
+    <script type="text/javascript">
+        function datepick() {
+            //alert('im also called after');
+            var disableddates = []; //dd/mm/yyyy
+            var data = {};
+            var userid = '<%= Session["user_id"] %>';
+            data.uid = userid;
+            //alert('ready');
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: '{"userid":"' + userid + '"}',
+                url: "leaveapply.aspx/disdates",
+                dataType: "json",
+                success: function (data) {
+                    for (var i = 0; i < data.d.length; i++) {
+                        //alert(data.d[i].hday);
+                        disableddates.push(data.d[i].EventDate);
+                    }
+                    //$("input[id$='bootdate']").datepicker({
+                    $('#txtdate').datepicker({
+                        format: "dd-mm-yyyy",
+                        keyboardNavigation: false,
+                        multidate: true,
+                        multidateSeparator: ",",
+                        daysOfWeekDisabled: "0,6", // to disable weekends 0 - sunday, 6 - saturday
+                        startDate: startdate, // to disable previous days
+                        endDate: enddate, // to disable future year dates
+                        todayHighlight: true, // to highlight today
+                        datesDisabled: disableddates, // array of days to be disabled
+                        orientation: "bottom auto"
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error datepick");
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function inputlimit() {
+            $('#txtreason').inputlimiter({
+                limit: 100,
+                remText: 'You only have %n character%s remaining...',
+                remFullText: 'Stop typing! You\'re not allowed any more characters!',
+                limitText: 'You\'re allowed to input %n character%s into this field.'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function leavevali() {
+            //var ltype;
+            //ltype = $('#ddlltype option:selected').val();
+            ////alert(ltype);
+            //if (ltype == 2 || ltype == 8) {
+            //    leavevalm.init();
+            //}
+            //else if (ltype == 4) {
+            //    leavevalr.init();
+            //}
+            //else {
+            //    leaveval.init();
+            //}
+            // combined all the validations into one js file.
+            leaveval.init();
+            //$('#btnreq').prop('disabled', 'disabled');
+        }
+    </script>
+    <script type="text/javascript">
+        function hidefupload() {
+            $('#fup').hide();
+            $('#dateranges').hide();
+        }
+    </script>
+    <script type="text/javascript">
+        function hideshowfup() {
+            var sdate = "+2d";
+            var yr = new Date().getFullYear() + '';
+            edate = "31-12-" + yr;
+            $('#dateranges').hide();
+            $('#txtdate').val("");
+            $('#txtsdate').val("");
+            $('#txtedate').val("");
+            $("#fupload").val("");
+            $('#lblreq').html('N/A');
+            chk = $('#ddlltype option:selected').val();
+            //alert(chk);
+            if (chk == 1) { // annual
+                //alert('annual');
+                $('#fup').hide();
+                $('#dateranges').hide();
+                $('#dates').show();
+                $("#txtdate").datepicker('remove');
+                $("#ddlper option[value='2']").removeAttr('disabled');
+                startdate = "-7d";
+                var yeara = new Date().getFullYear() + '';
+                enddate = "31-12-" + yeara;
+                datepick();
+
+            }
+            else if (chk == 2) { // medical
+                $('#fup').show();
+                $('#dateranges').hide();
+                $('#dates').show();
+                $("#txtdate").datepicker('remove');
+                $("#ddlper option[value='2']").removeAttr('disabled');
+                var yearm = new Date().getFullYear() + '';
+                startdate = "01-01-" + yearm;
+                enddate = "-1d";
+                datepick();
+
+            }
+            else if (chk == 8) { // Hospitalization
+                $('#fup').show();
+                $('#dateranges').hide();
+                $('#dates').show();
+                $("#txtdate").datepicker('remove');
+                $("#ddlper option[value='2']").removeAttr('disabled');
+                var yearh = new Date().getFullYear() + '';
+                startdate = "01-01-" + yearh;
+                enddate = "-1d";
+                datepick();
+
+            }
+            else if (chk == 7) {
+                $('#fup').hide();
+                $('#dateranges').hide();
+                $('#dates').show();
+                $("#txtdate").datepicker('remove');
+                $("#ddlper option[value='2']").attr('disabled', 'disabled');
+                startdate = "+2d";
+                var year = new Date().getFullYear() + '';
+                enddate = "31-12-" + year;
+                datepick();
+            }
+            else if (chk == 0) { // select
+                $("#txtdate").datepicker('remove');
+                $("#ddlper option[value='2']").removeAttr('disabled');
+                $('#fup').hide();
+                $('#dateranges').hide();
+                $('#dates').show();
+                $("#ddlper").prop("selectedIndex", 0);
+                $('#lblio').hide()
+                $('#pulsate-regulario').pulsate("destroy");
+                $('#pulsate-regulario').hide();
+                $('#btnreq').prop("disabled", false);
+            }
+            else if (chk == 4) { //maternity
+                $('#dates').hide();
+                $('#fup').hide();
+                $('#dateranges').show();
+                $("#ddlper option[value='2']").attr('disabled', 'disabled');
+                var disableddates = []; //dd/mm/yyyy
+                var data = {};
+                var userid = '<%= Session["user_id"] %>';
+                data.uid = userid;
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    data: '{"userid":"' + userid + '"}',
+                    url: "leaveapply.aspx/disdates",
+                    dataType: "json",
+                    success: function (data) {
+                        for (var i = 0; i < data.d.length; i++) {
+                            disableddates.push(data.d[i].EventDate);
+                        }
+                        $('#txtsdate').datepicker({
+                            format: "dd-mm-yyyy",
+                            keyboardNavigation: false,
+                            daysOfWeekDisabled: "0,6", // to disable weekends 0 - sunday, 6 - saturday
+                            startDate: sdate, // to disable previous days
+                            endDate: edate, // to disable future year dates
+                            todayHighlight: true, // to highlight today
+                            datesDisabled: disableddates, // array of days to be disabled
+                            orientation: "bottom auto"
+                        });
+
+                        $('#txtedate').datepicker({
+                            format: "dd-mm-yyyy",
+                            keyboardNavigation: false,
+                            daysOfWeekDisabled: "0,6", // to disable weekends 0 - sunday, 6 - saturday
+                            startDate: sdate, // to disable previous days
+                            endDate: edate, // to disable future year dates
+                            todayHighlight: true, // to highlight today
+                            datesDisabled: disableddates, // array of days to be disabled
+                            orientation: "bottom auto"
+                        });
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //alert("error datepick");
+                    }
+                });
+            }
+            else { //others
+                //alert('others');
+                $('#fup').hide();
+                $('#dateranges').hide();
+                $('#dates').show();
+                $("#txtdate").datepicker('remove');
+                $("#ddlper option[value='2']").removeAttr('disabled');
+                startdate = "+2d";
+                var year = new Date().getFullYear() + '';
+                enddate = "31-12-" + year;
+                datepick();
+            }
+}
+    </script>
+
+    <script type="text/javascript">
+        function updateAlerts() {
+            var data = {};
+            var userid = '<%= Session["user_id"] %>';
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: '{"userid":"' + userid + '"}',
+                url: "dash.aspx/updatealerts",
+                dataType: "json",
+                success: function (data) {
+                    if (data.d > 0) {
+                        $('#info').text(data.d);
+                    }
+                    else {
+                        $('#info').text("");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error notification badge");
+                }
+            });
+        }
+        setInterval(updateAlerts, 10000); // 10 seconds
+    </script>
+    <script type="text/javascript">
+        function sessiontimeout() {
+            $.sessionTimeout({
+                heading: 'h5',
+                title: 'Session Timeout',
+                message: 'Your session is about to expire. Do you want to stay connected?',
+                ignoreUserActivity: true,
+                warnAfter: 90000, //1.5 minutes
+                redirAfter: 100000, // 1.6 minute
+                keepAliveUrl: '/',
+                redirUrl: '../sessiontimeout.aspx',
+                logoutUrl: '../Logout.aspx'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function uprofilevali() {
+            //alert('im called user');
+            uprofileval.init();
+        }
+    </script>
+
+    <script type="text/javascript">
+        function cpassvali() {
+            //alert('im called user');
+            changepassval.init();
+        }
+    </script>
+    <script type="text/javascript">
+        $('#oldp').on('click', function () {
+            //alert($('#oldpwd_hr_txt').attr('type'));
+            if ($('#txt_oldpwd').attr('type') == "password") {
+                $("#txt_oldpwd").attr("type", "text");
+            }
+            else {
+                $("#txt_oldpwd").attr("type", "password");
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        $('#newp').on('click', function () {
+            //alert($('#oldpwd_hr_txt').attr('type'));
+            if ($('#txt_nwpwd').attr('type') == "password") {
+                $("#txt_nwpwd").attr("type", "text");
+            }
+            else {
+                $("#txt_nwpwd").attr("type", "password");
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        $('#cp').on('click', function () {
+            //alert($('#oldpwd_hr_txt').attr('type'));
+            if ($('#txt_conf_nwpwd').attr('type') == "password") {
+                $("#txt_conf_nwpwd").attr("type", "text");
+            }
+            else {
+                $("#txt_conf_nwpwd").attr("type", "password");
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        function chkoldpswd() {
+            //alert('called');
+            $('#pulsate-regular').pulsate("destroy");
+            //alert('im called');
+            var oldp;
+            var data = {};
+            var userid = '<%= Session["user_id"] %>';
+            //alert(userid);
+            oldp = $('#txt_oldpwd').val();
+            //alert(oldp);
+            if (oldp.length > 0) {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    data: '{"userid":"' + userid + '","oldp":"' + oldp + '"}',
+                    url: "chg_pass.aspx/oldpchk",
+                    dataType: "json",
+                    success: function (data) {
+                        //alert(data.d);
+                        if (data.d == 1) {
+                            $('#lblop').hide();
+                            $('#btncp').prop('disabled', false);
+                            $('#pulsate-regular').pulsate("destroy");
+                            $('#pulsate-regular').hide();
+                        }
+                        else {
+                            $('#btncp').prop('disabled', true);
+                            $('#pulsate-regular').show();
+                            $('#lblop').show();
+                            $('#pulsate-regular').pulsate({
+                                color: '#C43C35', // set the color of the pulse
+                                reach: 20, // how far the pulse goes in px
+                                speed: 1000, // how long one pulse takes in ms
+                                pause: 0, // how long the pause between pulses is in ms
+                                glow: true, // if the glow should be shown too
+                                repeat: true, // will repeat forever if true, if given a number will repeat for that many times
+                                onHover: false // if true only pulsate if user hovers over the element
+                            });
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //alert("error datepick");
+                    }
+                });
+            }
+            else {
+                $('#pulsate-regular').pulsate("destroy");
+                $('#pulsate-regular').hide();
+                $('#lblop').hide();
+                $('#btncp').prop('disabled', false);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function setcolspan() {
+            var gender = '<%= Session["gender"] %>';
+            if (gender == "Male") {
+                $("#ann1").addClass("col-sm-3");
+                $("#med1").addClass("col-sm-3");
+                $("#repl1").addClass("col-sm-3");
+                $("#pl1").addClass("col-sm-3");
+                // class="col-sm-4"
+                $("#mrg1").remove();
+            }
+            else {
+                $("#ann1").addClass("col-sm-3");
+                $("#med1").addClass("col-sm-3");
+                $("#repl1").addClass("col-sm-3");
+                $("#mrg1").addClass("col-sm-3");
+                // class="col-sm-3"
+                $("#pl1").remove();
+            }
+        }
+
+    </script>
+    <script type="text/javascript">
+        function inputlimit_add1() {
+            $('#txtadd1').inputlimiter({
+                limit: 20,
+                remText: 'You only have %n character%s remaining...',
+                remFullText: 'Stop typing! You\'re not allowed any more characters!',
+                limitText: 'You\'re allowed to input %n character%s into this field.'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function inputlimit_add2() {
+            $('#txtadd2').inputlimiter({
+                limit: 20,
+                remText: 'You only have %n character%s remaining...',
+                remFullText: 'Stop typing! You\'re not allowed any more characters!',
+                limitText: 'You\'re allowed to input %n character%s into this field.'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function reset_period() {
+            $('#ddlper').val('');
+            $('#lblio').hide();
+            $('#lblreq').html('');
+            $('#lblreq').html('N/A');
+            $('#pulsate-regulario').pulsate("destroy");
+            $('#pulsate-regulario').hide();
+            $('#btnreq').prop("disabled", false);
+        }
+    </script>
+    <script type="text/javascript">
+        function in_or_out() {
+            var userid, typ, per, ds, sd, ed, dv1, dv2, pert, region, reg;
+            userid = '<%= Session["user_id"] %>';
+            region = '<%= Session["region"] %>';
+            typ = $('#ddlltype option:selected').val();
+            per = $('#ddlper option:selected').val();
+            $('#lblio').hide();
+            $('#pulsate-regulario').pulsate("destroy");
+            $('#pulsate-regulario').hide();
+            //alert(per);
+            var data = {};
+
+            if (typ != "" && per != "") {
+                if (typ == 1 || typ == 2 || typ == 3 || typ == 7 || typ == 8) {
+                    ds = $('#txtdate').val();
+                    pert = $('#ddlper option:selected').text();
+                    if (ds != "") {
+                        dv1 = $('#txtdate').val();
+                        dv2 = (dv1.match(/,/g) || []).length + 1;
+                        $('#lblreq').html(dv2 + ' ' + pert);
+                    }
+                    //alert(typ);
+                    //alert(per);
+                    //alert(dates);
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        data: '{"userid":"' + userid + '","typ":"' + typ + '","per":"' + per + '","ds":"' + ds + '"}',
+                        url: "leaveapply.aspx/in_out_others",
+                        dataType: "json",
+                        success: function (data) {
+                            //alert(data.d);
+                            if (data.d == 1) {
+                                $('#lblio').hide();
+                                $('#pulsate-regulario').pulsate("destroy");
+                                $('#pulsate-regulario').hide();
+                                $('#btnreq').prop("disabled", false);
+                            }
+                            else if (data.d == 3) {
+                                $('#pulsate-regulario').show();
+                                $('#lblio').html('Leave Count is insufficiant');
+                                $('#lblio').show();
+                                $('#btnreq').prop("disabled", true);
+                                $('#pulsate-regulario').pulsate({
+                                    color: '#C43C35', // set the color of the pulse
+                                    reach: 20, // how far the pulse goes in px
+                                    speed: 1000, // how long one pulse takes in ms
+                                    pause: 0, // how long the pause between pulses is in ms
+                                    glow: true, // if the glow should be shown too
+                                    repeat: true, // will repeat forever if true, if given a number will repeat for that many times
+                                    onHover: false // if true only pulsate if user hovers over the element
+                                });
+                            }
+                            else if (data.d == 4) {
+                                $('#pulsate-regulario').show();
+                                $('#lblio').html('3 Full days Mandatory');
+                                $('#lblio').show();
+                                $('#btnreq').prop("disabled", true);
+                                $('#pulsate-regulario').pulsate({
+                                    color: '#C43C35', // set the color of the pulse
+                                    reach: 20, // how far the pulse goes in px
+                                    speed: 1000, // how long one pulse takes in ms
+                                    pause: 0, // how long the pause between pulses is in ms
+                                    glow: true, // if the glow should be shown too
+                                    repeat: true, // will repeat forever if true, if given a number will repeat for that many times
+                                    onHover: false // if true only pulsate if user hovers over the element
+                                });
+                            }
+                            else {
+                                console.log('uncaught mandatory');
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            //alert("error datepick");
+                        }
+                    });
+
+                }
+                else if (typ == 4) {
+                    sd = $('#txtsdate').val();
+                    ed = $('#txtedate').val();
+                    pert = $('#ddlper option:selected').text();
+                    $('#lblio').hide();
+                    $('#pulsate-regulario').pulsate("destroy");
+                    $('#pulsate-regulario').hide();
+
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json",
+                        data: '{"userid":"' + userid + '","typ":"' + typ + '","per":"' + per + '","sd":"' + sd + '","ed":"' + ed + '","region":"' + region + '"}',
+                        url: "leaveapply.aspx/in_out_maternity_days",
+                        dataType: "json",
+                        success: function (data) {
+                            $('#lblreq').html(data.d + ' ' + pert);
+
+
+                            $.ajax({
+                                type: "POST",
+                                contentType: "application/json",
+                                data: '{"userid":"' + userid + '","typ":"' + typ + '","per":"' + per + '","sd":"' + sd + '","ed":"' + ed + '","region":"' + region + '"}',
+                                url: "leaveapply.aspx/in_out_maternity",
+                                dataType: "json",
+                                success: function (data) {
+                                    //alert(data.d);
+                                    if (data.d == 1) {
+                                        $('#lblio').hide();
+                                        $('#pulsate-regulario').pulsate("destroy");
+                                        $('#pulsate-regulario').hide();
+                                        $('#btnreq').prop("disabled", false);
+                                    }
+                                    else if (data.d == 3) {
+                                        $('#pulsate-regulario').show();
+                                        $('#lblio').html('Leave Count is insufficiant');
+                                        $('#lblio').show();
+                                        $('#btnreq').prop("disabled", true);
+                                        $('#pulsate-regulario').pulsate({
+                                            color: '#C43C35', // set the color of the pulse
+                                            reach: 20, // how far the pulse goes in px
+                                            speed: 1000, // how long one pulse takes in ms
+                                            pause: 0, // how long the pause between pulses is in ms
+                                            glow: true, // if the glow should be shown too
+                                            repeat: true, // will repeat forever if true, if given a number will repeat for that many times
+                                            onHover: false // if true only pulsate if user hovers over the element
+                                        });
+                                    }
+                                    else if (data.d == 5) {
+                                        $('#pulsate-regulario').show();
+                                        $('#lblio').html('60 Full days Mandatory');
+                                        $('#lblio').show();
+                                        $('#btnreq').prop("disabled", true);
+                                        $('#pulsate-regulario').pulsate({
+                                            color: '#C43C35', // set the color of the pulse
+                                            reach: 20, // how far the pulse goes in px
+                                            speed: 1000, // how long one pulse takes in ms
+                                            pause: 0, // how long the pause between pulses is in ms
+                                            glow: true, // if the glow should be shown too
+                                            repeat: true, // will repeat forever if true, if given a number will repeat for that many times
+                                            onHover: false // if true only pulsate if user hovers over the element
+                                        });
+                                    }
+                                    else {
+                                        Console.log('Uncaught Maternity');
+                                    }
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    //alert("error datepick");
+                                }
+                            });//
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            //alert("error datepick");
+                        }
+                    });
+
+
+                }
+                else {
+                    pert = $('#ddlper option:selected').text();
+                    dv1 = $('#txtdate').val();
+                    dv2 = (dv1.match(/,/g) || []).length + 1;
+                    $('#lblreq').html(dv2 + ' ' + pert);
+                    $('#lblio').hide();
+                    $('#pulsate-regulario').pulsate("destroy");
+                    $('#pulsate-regulario').hide();
+                    $('#btnreq').prop("disabled", false);
+                }
+            }
+            else {
+                $('#lblreq').html('N/A');
+                $('#lblio').hide();
+                $('#pulsate-regulario').pulsate("destroy");
+                $('#pulsate-regulario').hide();
+                $('#btnreq').prop("disabled", false);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function browser_back() {
+            //alert('im called');
+            //$.ajax({
+            //    type: "POST",
+            //    contentType: "application/json",
+            //    data: {},
+            //    url: "leaveapply.aspx/browser_back",
+            //    dataType: "json",
+            //    success: function (data) {
+            //        alert('browser back pressed');
+            //    },
+            //    error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //        console.log('browser back button clicked!');
+            //    }
+            //});
+            $('#ddlltype').val('');
+            $('#ddlper').val('');
+            $('#txtreason').val('');
+            $('#ddljobc').val('');
+            $('#txtdate').val('');
+            $('#txtsdate').val('');
+            $('#txtedate').val('');
+
+        }
+    </script>
+    <script type="text/javascript">
+        function HandleBackFunctionality() {
+            if (window.event) {
+                if (window.event.clientX < 40 && window.event.clientY < 0) {
+                    alert("Browser back button is clicked…");
+                }
+                else {
+                    alert("Browser refresh button is clicked…");
+                }
+            }
+            else {
+                if (event.currentTarget.performance.navigation.type == 1) {
+                    alert("Browser refresh button is clicked firefox…");
+                }
+                if (event.currentTarget.performance.navigation.type == 2) {
+                    alert("Browser back button is clicked firefox…");
+                }
+            }
+        }
+    </script>
+</body>
+<!-- end: BODY -->
+</html>

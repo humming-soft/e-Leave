@@ -1,0 +1,1020 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1E59B44-9BAA-4765-86A7-5B634D8EF537}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eleave_view</RootNamespace>
+    <AssemblyName>eleave_view</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=15.1.4.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.15.1.4.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.DirectoryServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\main-responsive.css" />
+    <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\main1.css" />
+    <Content Include="assets\css\theme_black_and_white.css" />
+    <Content Include="assets\css\theme_dark.css" />
+    <Content Include="assets\css\theme_green.css" />
+    <Content Include="assets\css\theme_light.css" />
+    <Content Include="assets\css\theme_navy.css" />
+    <Content Include="assets\fonts\style.css" />
+    <Content Include="assets\images\avatar-1-small.jpg" />
+    <Content Include="assets\images\avatar-1-xl.jpg" />
+    <Content Include="assets\images\avatar-1.jpg" />
+    <Content Include="assets\images\avatar-2.jpg" />
+    <Content Include="assets\images\avatar-3.jpg" />
+    <Content Include="assets\images\avatar-4.jpg" />
+    <Content Include="assets\images\avatar-5.jpg" />
+    <Content Include="assets\images\back-error-page.jpg" />
+    <Content Include="assets\images\bg.png" />
+    <Content Include="assets\images\bg_2.png" />
+    <Content Include="assets\images\bg_3.png" />
+    <Content Include="assets\images\bg_4.png" />
+    <Content Include="assets\images\bg_5.png" />
+    <Content Include="assets\images\blackandwhite.png" />
+    <Content Include="assets\images\darkgrey.png" />
+    <Content Include="assets\images\double_loader.GIF" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\favicon_old.ico" />
+    <Content Include="assets\images\green.png" />
+    <Content Include="assets\images\HS_Logo_N.jpg" />
+    <Content Include="assets\images\leaves.jpg" />
+    <Content Include="assets\images\leaves1.jpg" />
+    <Content Include="assets\images\lightgrey.png" />
+    <Content Include="assets\images\loader_new.GIF" />
+    <Content Include="assets\images\loading.gif" />
+    <Content Include="assets\images\Logo 1.jpg" />
+    <Content Include="assets\images\menu-white-arrow.png" />
+    <Content Include="assets\images\navy.png" />
+    <Content Include="assets\images\summersoft.jpg" />
+    <Content Include="assets\images\timer-piece.png" />
+    <Content Include="assets\js\agaile.js" />
+    <Content Include="assets\js\applyleavem_hr.js" />
+    <Content Include="assets\js\applyleaver_hr.js" />
+    <Content Include="assets\js\bulkuploadvalidation.js" />
+    <Content Include="assets\js\applyleave_hr.js" />
+    <Content Include="assets\js\changepassword.js" />
+    <Content Include="assets\js\changepasswordmd.js" />
+    <Content Include="assets\js\charts.js" />
+    <Content Include="assets\js\datatables.js" />
+    <Content Include="assets\js\datatablesuser.js" />
+    <Content Include="assets\js\datatables_md_ed.js" />
+    <Content Include="assets\js\edit_leave_hr.js" />
+    <Content Include="assets\js\form-calendar.js" />
+    <Content Include="assets\js\form-dropzone.js" />
+    <Content Include="assets\js\form-elements.js" />
+    <Content Include="assets\js\form-image-cropping.js" />
+    <Content Include="assets\js\form-valiation-custom.js" />
+    <Content Include="assets\js\form-validation.js" />
+    <Content Include="assets\js\form-wizard.js" />
+    <Content Include="assets\js\formval.js" />
+    <Content Include="assets\js\index.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\leaveformmval.js" />
+    <Content Include="assets\js\leaveformrval.js" />
+    <Content Include="assets\js\leaveformval.js" />
+    <Content Include="assets\js\login.js" />
+    <Content Include="assets\js\login_custom.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\maps.js" />
+    <Content Include="assets\js\removeval.js" />
+    <Content Include="assets\js\table-data.js" />
+    <Content Include="assets\js\ui-buttons.js" />
+    <Content Include="assets\js\ui-elements.js" />
+    <Content Include="assets\js\ui-modals.js" />
+    <Content Include="assets\js\ui-nestable.js" />
+    <Content Include="assets\js\ui-sliders.js" />
+    <Content Include="assets\js\ui-treeview.js" />
+    <Content Include="assets\js\updateprofile.js" />
+    <Content Include="assets\js\uservalidation.js" />
+    <Content Include="assets\js\utility-coming-soon.js" />
+    <Content Include="assets\js\utility-error404.js" />
+    <Content Include="assets\js\valrreason.js" />
+    <Content Include="assets\plugins\autosize\jquery.autosize.min.js" />
+    <Content Include="assets\plugins\blockUI\jquery.blockUI.js" />
+    <Content Include="assets\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
+    <Content Include="assets\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="assets\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="assets\plugins\bootstrap-colorpicker\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="assets\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="assets\plugins\bootstrap-colorpicker\js\commits.js" />
+    <Content Include="assets\plugins\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="assets\plugins\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="assets\plugins\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="assets\plugins\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="assets\plugins\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="assets\plugins\bootstrap-fileupload\bootstrap-fileupload.min.css" />
+    <Content Include="assets\plugins\bootstrap-fileupload\bootstrap-fileupload.min.js" />
+    <Content Include="assets\plugins\bootstrap-modal\css\bootstrap-modal-bs3patch.css" />
+    <Content Include="assets\plugins\bootstrap-modal\css\bootstrap-modal.css" />
+    <Content Include="assets\plugins\bootstrap-modal\js\bootstrap-modal.js" />
+    <Content Include="assets\plugins\bootstrap-modal\js\bootstrap-modalmanager.js" />
+    <Content Include="assets\plugins\bootstrap-paginator\src\bootstrap-paginator.js" />
+    <Content Include="assets\plugins\bootstrap-social-buttons\social-buttons-3.css" />
+    <Content Include="assets\plugins\bootstrap-switch\static\js\bootstrap-switch.min.js" />
+    <Content Include="assets\plugins\bootstrap-switch\static\stylesheets\bootstrap-switch.css" />
+    <Content Include="assets\plugins\bootstrap-timepicker\css\bootstrap-timepicker.min.css" />
+    <Content Include="assets\plugins\bootstrap-timepicker\js\bootstrap-timepicker.min.js" />
+    <Content Include="assets\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\plugins\circliful\font-awesome.min.css" />
+    <Content Include="assets\plugins\circliful\jquery.circliful.css" />
+    <Content Include="assets\plugins\circliful\jquery.circliful.js" />
+    <Content Include="assets\plugins\circliful\jquery.circliful.min.js" />
+    <Content Include="assets\plugins\ckeditor\adapters\jquery.js" />
+    <Content Include="assets\plugins\ckeditor\ckeditor.js" />
+    <Content Include="assets\plugins\ckeditor\contents.css" />
+    <Content Include="assets\plugins\DataTables\media\css\DT_bootstrap.css" />
+    <Content Include="assets\plugins\DataTables\media\css\images\sort_asc.png" />
+    <Content Include="assets\plugins\DataTables\media\css\images\sort_asc_disabled.png" />
+    <Content Include="assets\plugins\DataTables\media\css\images\sort_both.png" />
+    <Content Include="assets\plugins\DataTables\media\css\images\sort_desc.png" />
+    <Content Include="assets\plugins\DataTables\media\css\images\sort_desc_disabled.png" />
+    <Content Include="assets\plugins\DataTables\media\js\DT_bootstrap.js" />
+    <Content Include="assets\plugins\DataTables\media\js\jquery.dataTables.min.js" />
+    <Content Include="assets\plugins\datepicker\css\bootstrap-datepicker3.css" />
+    <Content Include="assets\plugins\datepicker\css\datepicker.css" />
+    <Content Include="assets\plugins\dropzone\downloads\css\dropzone.css" />
+    <Content Include="assets\plugins\dropzone\downloads\dropzone.min.js" />
+    <Content Include="assets\plugins\dropzone\downloads\images\spritemap%402x.png" />
+    <Content Include="assets\plugins\dropzone\downloads\images\spritemap.png" />
+    <Content Include="assets\plugins\dynatree\src\jquery.dynatree.js" />
+    <Content Include="assets\plugins\dynatree\src\skin-vista\icons.gif" />
+    <Content Include="assets\plugins\dynatree\src\skin-vista\loading.gif" />
+    <Content Include="assets\plugins\dynatree\src\skin-vista\ui.dynatree.css" />
+    <Content Include="assets\plugins\flot\jquery.flot.categories.js" />
+    <Content Include="assets\plugins\flot\jquery.flot.js" />
+    <Content Include="assets\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="assets\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="assets\plugins\flot\jquery.flot.resize.min.js" />
+    <Content Include="assets\plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="assets\plugins\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="assets\plugins\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="assets\plugins\gmaps\gmaps.js" />
+    <Content Include="assets\plugins\gritter\css\jquery.gritter.css" />
+    <Content Include="assets\plugins\gritter\images\gritter-light.png" />
+    <Content Include="assets\plugins\gritter\images\gritter.png" />
+    <Content Include="assets\plugins\gritter\images\ie-spacer.gif" />
+    <Content Include="assets\plugins\gritter\js\jquery.gritter.min.js" />
+    <Content Include="assets\plugins\highcharts\exporting.js" />
+    <Content Include="assets\plugins\highcharts\highcharts.js" />
+    <Content Include="assets\plugins\iCheck\jquery.icheck.min.js" />
+    <Content Include="assets\plugins\iCheck\skins\all.css" />
+    <Content Include="assets\plugins\iCheck\skins\flat\aero%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\aero.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\blue%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\blue.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\flat%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\flat.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\green%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\green.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\grey%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\grey.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\orange%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\orange.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\pink%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\pink.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\purple%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\purple.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\red%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\red.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\yellow%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\yellow.png" />
+    <Content Include="assets\plugins\iCheck\skins\flat\_all.css" />
+    <Content Include="assets\plugins\iCheck\skins\futurico\futurico%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\futurico\futurico.css" />
+    <Content Include="assets\plugins\iCheck\skins\futurico\futurico.png" />
+    <Content Include="assets\plugins\iCheck\skins\line\line%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\line\line.png" />
+    <Content Include="assets\plugins\iCheck\skins\line\_all.css" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\aero%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\aero.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\blue%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\blue.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\green%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\green.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\grey%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\grey.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\minimal%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\minimal.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\orange%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\orange.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\pink%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\pink.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\purple%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\purple.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\red%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\red.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\yellow%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\yellow.png" />
+    <Content Include="assets\plugins\iCheck\skins\minimal\_all.css" />
+    <Content Include="assets\plugins\iCheck\skins\polaris\polaris%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\polaris\polaris.css" />
+    <Content Include="assets\plugins\iCheck\skins\polaris\polaris.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\aero%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\aero.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\blue%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\blue.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\green%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\green.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\grey%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\grey.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\orange%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\orange.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\pink%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\pink.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\purple%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\purple.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\red%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\red.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\square%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\square.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\yellow%402x.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\yellow.png" />
+    <Content Include="assets\plugins\iCheck\skins\square\_all.css" />
+    <Content Include="assets\plugins\Jcrop\css\Jcrop.gif" />
+    <Content Include="assets\plugins\Jcrop\css\jquery.Jcrop.min.css" />
+    <Content Include="assets\plugins\Jcrop\demos\demo_files\pool.jpg" />
+    <Content Include="assets\plugins\Jcrop\demos\demo_files\sago.jpg" />
+    <Content Include="assets\plugins\Jcrop\js\jquery.color.js" />
+    <Content Include="assets\plugins\Jcrop\js\jquery.Jcrop.min.js" />
+    <Content Include="assets\plugins\jQRangeSlider\css\classic-min.css" />
+    <Content Include="assets\plugins\jQRangeSlider\css\icons-classic\label.png" />
+    <Content Include="assets\plugins\jQRangeSlider\css\icons-classic\resultset_next.png" />
+    <Content Include="assets\plugins\jQRangeSlider\css\icons-classic\resultset_previous.png" />
+    <Content Include="assets\plugins\jQRangeSlider\jQAllRangeSliders-min.js" />
+    <Content Include="assets\plugins\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="assets\plugins\jQuery-File-Upload\css\jquery.fileupload-ui.css" />
+    <Content Include="assets\plugins\jQuery-File-Upload\img\loading.gif" />
+    <Content Include="assets\plugins\jQuery-File-Upload\img\progressbar.gif" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.fileupload-audio.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.fileupload-image.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.fileupload-process.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.fileupload-ui.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.fileupload-validate.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.fileupload-video.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.fileupload.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\jquery.iframe-transport.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\main.js" />
+    <Content Include="assets\plugins\jQuery-File-Upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="assets\plugins\jquery-inputlimiter\jquery.inputlimiter.1.3.1.min.js" />
+    <Content Include="assets\plugins\jQuery-Knob\js\jquery.knob.js" />
+    <Content Include="assets\plugins\jQuery-Smart-Wizard\js\jquery.smartWizard.js" />
+    <Content Include="assets\plugins\jQuery-Tags-Input\jquery.tagsinput.css" />
+    <Content Include="assets\plugins\jQuery-Tags-Input\jquery.tagsinput.js" />
+    <Content Include="assets\plugins\jquery-ui-touch-punch\jquery.ui.touch-punch.min.js" />
+    <Content Include="assets\plugins\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\plugins\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="assets\plugins\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="assets\plugins\jquery-ui\jquery-ui-1.10.2.custom.min.js" />
+    <Content Include="assets\plugins\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="assets\plugins\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="assets\plugins\jquery.maskedinput\src\jquery.maskedinput.js" />
+    <Content Include="assets\plugins\jquery.pulsate\jquery.pulsate.min.js" />
+    <Content Include="assets\plugins\jquery.sparkline\jquery.sparkline.js" />
+    <Content Include="assets\plugins\ladda-bootstrap\dist\ladda-themeless.min.css" />
+    <Content Include="assets\plugins\ladda-bootstrap\dist\ladda.min.js" />
+    <Content Include="assets\plugins\ladda-bootstrap\dist\spin.min.js" />
+    <Content Include="assets\plugins\loader\blockui.min.js" />
+    <Content Include="assets\plugins\loader\pace.min.js" />
+    <Content Include="assets\plugins\loader\progressbar.min.js" />
+    <Content Include="assets\plugins\nestable\jquery.nestable.js" />
+    <Content Include="assets\plugins\perfect-scrollbar\src\jquery.mousewheel.js" />
+    <Content Include="assets\plugins\perfect-scrollbar\src\perfect-scrollbar.css" />
+    <Content Include="assets\plugins\perfect-scrollbar\src\perfect-scrollbar.js" />
+    <Content Include="assets\plugins\rainyday\rainyday.js" />
+    <Content Include="assets\plugins\select2\select2-spinner.gif" />
+    <Content Include="assets\plugins\select2\select2.css" />
+    <Content Include="assets\plugins\select2\select2.min.js" />
+    <Content Include="assets\plugins\select2\select2.png" />
+    <Content Include="assets\plugins\select2\select2x2.png" />
+    <Content Include="assets\plugins\shaker\jquery-shaker.js" />
+    <Content Include="assets\plugins\shaker\jquery.jrumble.1.3.min.js" />
+    <Content Include="assets\plugins\summernote\build\summernote.css" />
+    <Content Include="assets\plugins\summernote\build\summernote.min.js" />
+    <Content Include="assets\plugins\swal\sweetalert-dev.js" />
+    <Content Include="assets\plugins\swal\sweetalert.css" />
+    <Content Include="assets\plugins\swal\sweetalert.min.js" />
+    <Content Include="assets\plugins\swal\themes\facebook\facebook.css" />
+    <Content Include="assets\plugins\swal\themes\google\google.css" />
+    <Content Include="assets\plugins\swal\themes\twitter\twitter.css" />
+    <Content Include="assets\plugins\timeout\session_timeout.min.js" />
+    <Content Include="hr\adduser.aspx" />
+    <Content Include="hr\applyleave_hr.aspx" />
+    <Content Include="hr\approve_leave_hr.aspx" />
+    <Content Include="hr\app_rej_forward_hr.aspx" />
+    <Content Include="hr\balleave.aspx" />
+    <Content Include="hr\cancel_hr.aspx" />
+    <Content Include="hr\cf.aspx" />
+    <Content Include="hr\cfleave.aspx" />
+    <Content Include="hr\chg_pass_hr.aspx" />
+    <Content Include="hr\cholidays.aspx" />
+    <Content Include="hr\cholidays_hr.aspx" />
+    <Content Include="hr\download_all_hr.aspx" />
+    <Content Include="hr\edituser.aspx" />
+    <Content Include="hr\edit_leave.aspx" />
+    <Content Include="hr\forward_hr.aspx" />
+    <Content Include="hr\holidays_upload.aspx" />
+    <Content Include="hr\hrdash.aspx" />
+    <Content Include="hr\leavetaken.aspx" />
+    <Content Include="hr\leave_logs.aspx" />
+    <Content Include="hr\listuser.aspx" />
+    <Content Include="hr\status_leave_hr.aspx" />
+    <Content Include="hr\testpage_hr.aspx" />
+    <Content Include="hr\update_profile.aspx" />
+    <Content Include="hr\userleavesall.aspx" />
+    <Content Include="hr\user_add.aspx" />
+    <Content Include="hr\WebForm1.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
+    <Content Include="MainPage.aspx" />
+    <Content Include="md\app_rej.aspx" />
+    <Content Include="md\balleave.aspx" />
+    <Content Include="md\cancelappr.aspx" />
+    <Content Include="md\cfleave.aspx" />
+    <Content Include="md\chg_pass.aspx" />
+    <Content Include="md\dash.aspx" />
+    <Content Include="md\leavetaken.aspx" />
+    <Content Include="md\leave_logs.aspx" />
+    <Content Include="md\listuser.aspx" />
+    <Content Include="md\update_profile.aspx" />
+    <Content Include="md\userleavesall.aspx" />
+    <Content Include="md\WebForm1.aspx" />
+    <Content Include="sessiontimeout.aspx" />
+    <Content Include="unauthorised.aspx" />
+    <Content Include="user\cancel.aspx" />
+    <Content Include="user\chg_pass.aspx" />
+    <Content Include="user\dash.aspx" />
+    <Content Include="user\dtabletest.aspx" />
+    <Content Include="user\leaveapply.aspx" />
+    <Content Include="user\leaves.aspx" />
+    <Content Include="user\listleaves.aspx" />
+    <Content Include="user\update_profile.aspx" />
+    <Content Include="user\WebForm1.aspx" />
+    <Content Include="user\WebForm2.aspx" />
+    <Content Include="user\WebForm3.aspx" />
+    <Content Include="ViewPdf.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="hr\adduser.aspx.cs">
+      <DependentUpon>adduser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\adduser.aspx.designer.cs">
+      <DependentUpon>adduser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\applyleave_hr.aspx.cs">
+      <DependentUpon>applyleave_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\applyleave_hr.aspx.designer.cs">
+      <DependentUpon>applyleave_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\approved_malaysia.cs">
+      <DependentUpon>approved_malaysia.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="hr\approved.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>approved.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hr\approve_leave_hr.aspx.cs">
+      <DependentUpon>approve_leave_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\approve_leave_hr.aspx.designer.cs">
+      <DependentUpon>approve_leave_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\app_rej_forward_hr.aspx.cs">
+      <DependentUpon>app_rej_forward_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\app_rej_forward_hr.aspx.designer.cs">
+      <DependentUpon>app_rej_forward_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\balleave.aspx.cs">
+      <DependentUpon>balleave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\balleave.aspx.designer.cs">
+      <DependentUpon>balleave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\bal_leave.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bal_leave.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hr\cancel_hr.aspx.cs">
+      <DependentUpon>cancel_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\cancel_hr.aspx.designer.cs">
+      <DependentUpon>cancel_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\cf.aspx.cs">
+      <DependentUpon>cf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\cf.aspx.designer.cs">
+      <DependentUpon>cf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\cfleave.aspx.cs">
+      <DependentUpon>cfleave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\cfleave.aspx.designer.cs">
+      <DependentUpon>cfleave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\cf_leave.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cf_leave.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hr\chg_pass_hr.aspx.cs">
+      <DependentUpon>chg_pass_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\chg_pass_hr.aspx.designer.cs">
+      <DependentUpon>chg_pass_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\cholidays.aspx.cs">
+      <DependentUpon>cholidays.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\cholidays.aspx.designer.cs">
+      <DependentUpon>cholidays.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\cholidays_hr.aspx.cs">
+      <DependentUpon>cholidays_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\cholidays_hr.aspx.designer.cs">
+      <DependentUpon>cholidays_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\download_all_hr.aspx.cs">
+      <DependentUpon>download_all_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\download_all_hr.aspx.designer.cs">
+      <DependentUpon>download_all_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\download_approved_hr.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>download_approved_hr.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hr\edituser.aspx.cs">
+      <DependentUpon>edituser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\edituser.aspx.designer.cs">
+      <DependentUpon>edituser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\edit_leave.aspx.cs">
+      <DependentUpon>edit_leave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\edit_leave.aspx.designer.cs">
+      <DependentUpon>edit_leave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\forward_hr.aspx.cs">
+      <DependentUpon>forward_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\forward_hr.aspx.designer.cs">
+      <DependentUpon>forward_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\holidays_upload.aspx.cs">
+      <DependentUpon>holidays_upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\holidays_upload.aspx.designer.cs">
+      <DependentUpon>holidays_upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\hr.Master.cs">
+      <DependentUpon>hr.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\hr.Master.designer.cs">
+      <DependentUpon>hr.Master</DependentUpon>
+    </Compile>
+    <Compile Include="hr\hrdash.aspx.cs">
+      <DependentUpon>hrdash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\hrdash.aspx.designer.cs">
+      <DependentUpon>hrdash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\leavestaken.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>leavestaken.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="hr\leavetaken.aspx.cs">
+      <DependentUpon>leavetaken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\leavetaken.aspx.designer.cs">
+      <DependentUpon>leavetaken.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\leave_logs.aspx.cs">
+      <DependentUpon>leave_logs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\leave_logs.aspx.designer.cs">
+      <DependentUpon>leave_logs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\listuser.aspx.cs">
+      <DependentUpon>listuser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\listuser.aspx.designer.cs">
+      <DependentUpon>listuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\status_leave_hr.aspx.cs">
+      <DependentUpon>status_leave_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\status_leave_hr.aspx.designer.cs">
+      <DependentUpon>status_leave_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\testpage_hr.aspx.cs">
+      <DependentUpon>testpage_hr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\testpage_hr.aspx.designer.cs">
+      <DependentUpon>testpage_hr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\update_profile.aspx.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\update_profile.aspx.designer.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\userleavesall.aspx.cs">
+      <DependentUpon>userleavesall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\userleavesall.aspx.designer.cs">
+      <DependentUpon>userleavesall.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\user_add.aspx.cs">
+      <DependentUpon>user_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\user_add.aspx.designer.cs">
+      <DependentUpon>user_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hr\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hr\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.aspx.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage.aspx.designer.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\app_rej.aspx.cs">
+      <DependentUpon>app_rej.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\app_rej.aspx.designer.cs">
+      <DependentUpon>app_rej.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\balleave.aspx.cs">
+      <DependentUpon>balleave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\balleave.aspx.designer.cs">
+      <DependentUpon>balleave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\cancelappr.aspx.cs">
+      <DependentUpon>cancelappr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\cancelappr.aspx.designer.cs">
+      <DependentUpon>cancelappr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\cfleave.aspx.cs">
+      <DependentUpon>cfleave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\cfleave.aspx.designer.cs">
+      <DependentUpon>cfleave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\chg_pass.aspx.cs">
+      <DependentUpon>chg_pass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\chg_pass.aspx.designer.cs">
+      <DependentUpon>chg_pass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\dash.aspx.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\dash.aspx.designer.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\leavetaken.aspx.cs">
+      <DependentUpon>leavetaken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\leavetaken.aspx.designer.cs">
+      <DependentUpon>leavetaken.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\leave_logs.aspx.cs">
+      <DependentUpon>leave_logs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\leave_logs.aspx.designer.cs">
+      <DependentUpon>leave_logs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\listuser.aspx.cs">
+      <DependentUpon>listuser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\listuser.aspx.designer.cs">
+      <DependentUpon>listuser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\md.Master.cs">
+      <DependentUpon>md.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\md.Master.designer.cs">
+      <DependentUpon>md.Master</DependentUpon>
+    </Compile>
+    <Compile Include="md\update_profile.aspx.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\update_profile.aspx.designer.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\userleavesall.aspx.cs">
+      <DependentUpon>userleavesall.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\userleavesall.aspx.designer.cs">
+      <DependentUpon>userleavesall.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="md\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="md\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sessiontimeout.aspx.cs">
+      <DependentUpon>sessiontimeout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sessiontimeout.aspx.designer.cs">
+      <DependentUpon>sessiontimeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="unauthorised.aspx.cs">
+      <DependentUpon>unauthorised.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="unauthorised.aspx.designer.cs">
+      <DependentUpon>unauthorised.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\approved_malaysia.cs">
+      <DependentUpon>approved_malaysia.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="user\approved.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>approved.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="user\cancel.aspx.cs">
+      <DependentUpon>cancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\cancel.aspx.designer.cs">
+      <DependentUpon>cancel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\chg_pass.aspx.cs">
+      <DependentUpon>chg_pass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\chg_pass.aspx.designer.cs">
+      <DependentUpon>chg_pass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\dash.aspx.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\dash.aspx.designer.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\download_approved.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>download_approved.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="user\dtabletest.aspx.cs">
+      <DependentUpon>dtabletest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\dtabletest.aspx.designer.cs">
+      <DependentUpon>dtabletest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\leaveapply.aspx.cs">
+      <DependentUpon>leaveapply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\leaveapply.aspx.designer.cs">
+      <DependentUpon>leaveapply.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\leaves.aspx.cs">
+      <DependentUpon>leaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\leaves.aspx.designer.cs">
+      <DependentUpon>leaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\listleaves.aspx.cs">
+      <DependentUpon>listleaves.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\listleaves.aspx.designer.cs">
+      <DependentUpon>listleaves.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\update_profile.aspx.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\update_profile.aspx.designer.cs">
+      <DependentUpon>update_profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\user.Master.cs">
+      <DependentUpon>user.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\user.Master.designer.cs">
+      <DependentUpon>user.Master</DependentUpon>
+    </Compile>
+    <Compile Include="user\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPdf.aspx.cs">
+      <DependentUpon>ViewPdf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewPdf.aspx.designer.cs">
+      <DependentUpon>ViewPdf.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\fonts\fonts\clip-font.eot" />
+    <None Include="assets\fonts\fonts\clip-font.eot%40" />
+    <None Include="assets\fonts\fonts\clip-font.svg" />
+    <None Include="assets\fonts\fonts\clip-font.ttf" />
+    <None Include="assets\fonts\fonts\clip-font.woff" />
+    <None Include="assets\fonts\fonts\clip-fontd41d.eot" />
+    <None Include="assets\fonts\fonts\Descr.WD3" />
+    <None Include="assets\images\Descr.WD3" />
+    <None Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="assets\plugins\bootstrap\fonts\glyphicons-halflings-regulard41d.eot" />
+    <None Include="assets\plugins\font-awesome\font\fontawesome-webfont.svg" />
+    <None Include="assets\plugins\font-awesome\font\fontawesome-webfontd41d.eot" />
+    <None Include="assets\plugins\font-awesome\font\fontawesome-webfontf77b.eot" />
+    <None Include="assets\plugins\font-awesome\font\fontawesome-webfontf77b.ttf" />
+    <None Include="assets\plugins\font-awesome\font\fontawesome-webfontf77b.woff" />
+    <Content Include="user\user.Master" />
+    <None Include="assets\plugins\swal\themes\facebook\facebook.scss" />
+    <None Include="assets\plugins\swal\themes\google\google.scss" />
+    <None Include="assets\plugins\swal\themes\twitter\twitter.scss" />
+    <Content Include="hr\hr.Master" />
+    <Content Include="md\md.Master" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="pdf\" />
+    <Folder Include="uploads\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eleave_c\eleave_c.csproj">
+      <Project>{2610C701-DE99-47FC-9CC2-A69CBC517D0F}</Project>
+      <Name>eleave_c</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="hr\approved_malaysia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>approved_malaysia.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hr\approved.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>approved.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hr\bal_leave.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>bal_leave.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hr\cf_leave.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cf_leave.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hr\download_approved_hr.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>download_approved_hr.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hr\leavestaken.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>leavestaken.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\approved_malaysia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>approved_malaysia.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\approved.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>approved.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="user\download_approved.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>download_approved.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1170</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

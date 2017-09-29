@@ -1,0 +1,741 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="md.master.cs" Inherits="eleave_view.md.md" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>e-leave</title>
+    <script type="text/javascript">
+
+        function preventBack() {
+            window.history.forward();
+        }
+
+        setTimeout("preventBack()", 0);
+
+        window.onunload = function () {
+            null
+        };
+
+    </script>
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link href="../assets/plugins/swal/sweetalert.css" rel="stylesheet" type="text/css" />
+    <script src="../assets/plugins/swal/sweetalert.min.js" type="text/javascript"></script>
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../assets/fonts/style.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main-responsive.css" />
+    <link rel="stylesheet" href="../assets/plugins/iCheck/skins/all.css" />
+    <link rel="stylesheet" href="../assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../assets/css/theme_light.css" id="skin_color" />
+    <!--[if IE 7]>
+		<link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+    <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="../assets/plugins/fullcalendar/fullcalendar/fullcalendar.css" />
+    <link href="../assets/plugins/circliful/font-awesome.min.css" rel="stylesheet" />
+    <link href="../assets/plugins/circliful/jquery.circliful.css" rel="stylesheet" />
+    <link href="../assets/plugins/datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/DataTables/media/css/DT_bootstrap.css" rel="stylesheet" />
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('../assets/images/double_loader.gif') 50% 50% no-repeat rgb(249,249,249);
+        }
+    </style>
+    <%--    <script type="text/javascript">
+        $(window).load(function () {
+            $(".loader").fadeOut(5000);
+        })
+    </script>--%>
+    <script type="text/css">
+        .chosen-disabled {
+         opacity: 1 !important; 
+         background-color: #FFF !important;
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- Loading Container -->
+<%--    <div class="loader" id="loader" style="display: none"></div>--%>
+    <!--  /Loading Container -->
+    <!-- start: HEADER -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <!-- start: TOP NAVIGATION CONTAINER -->
+        <div class="container">
+            <div class="navbar-header">
+                <!-- start: RESPONSIVE MENU TOGGLER -->
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="clip-list-2"></span>
+                </button>
+                <!-- end: RESPONSIVE MENU TOGGLER -->
+                <!-- start: LOGO -->
+                <a class="navbar-brand" href="dash.aspx">
+                    <i class="clip-IE"></i>
+                    <asp:Label ID="Label1" runat="server" Text="- Leave" ForeColor="#007AFF"></asp:Label>
+                </a>
+                <!-- end: LOGO -->
+            </div>
+            <div class="navbar-tools">
+                <!-- start: TOP NAVIGATION MENU -->
+                <ul class="nav navbar-right">
+                    <!-- start: TO-DO DROPDOWN -->
+                    <%--						<li class="dropdown">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="clip-list-5"></i>
+								<span class="badge"> 12</span>
+							</a>
+						</li>--%>
+                    <!-- end: TO-DO DROPDOWN-->
+                    <!-- start: NOTIFICATION DROPDOWN -->
+                    <li class="dropdown">
+                        <a href="app_rej.aspx" class="dropdown-toggle">
+                            <i class="icon-info"></i>
+                            <span class="badge" id="info"></span>
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="cancelappr.aspx" class="dropdown-toggle">
+                            <i class="icon-bell-alt"></i>
+                            <span class="badge" id="info1"></span>
+                        </a>
+                    </li>
+                    <!-- end: NOTIFICATION DROPDOWN -->
+                    <!-- start: MESSAGE DROPDOWN -->
+                    <%--						<li class="dropdown">
+							<a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
+								<i class="clip-bubble-3"></i>
+								<span class="badge"> 9</span>
+							</a>
+						</li>--%>
+                    <!-- end: MESSAGE DROPDOWN -->
+                    <!-- start: USER DROPDOWN -->
+                    <li class="dropdown current-user">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <%--<img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">--%>
+                            <asp:Label ID="lbluname" CssClass="username" runat="server"></asp:Label>
+                            <i class="clip-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="update_profile.aspx">
+                                    <i class="clip-user-4 "></i>
+                                    &nbsp;Update Profile
+                                </a>
+                            </li>
+<%--                            <li>
+                                <a href="chg_pass.aspx">
+                                    <i class="clip-key "></i>
+                                    &nbsp;Change Password
+                                </a>
+                            </li>--%>
+                            <li>
+                                <a href="../Logout.aspx">
+                                    <i class="clip-exit"></i>
+                                    &nbsp;Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end: USER DROPDOWN -->
+                </ul>
+                <!-- end: TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- end: TOP NAVIGATION CONTAINER -->
+    </div>
+    <!-- end: HEADER -->
+    <!-- start: MAIN CONTAINER -->
+    <div class="main-container">
+        <div class="navbar-content">
+            <!-- start: SIDEBAR -->
+            <div class="main-navigation navbar-collapse collapse">
+                <!-- start: MAIN MENU TOGGLER BUTTON -->
+                <div class="navigation-toggler">
+                    <i class="clip-chevron-left"></i>
+                    <i class="clip-chevron-right"></i>
+                </div>
+                <!-- end: MAIN MENU TOGGLER BUTTON -->
+                <!-- start: MAIN NAVIGATION MENU -->
+                <ul class="main-navigation-menu">
+                    <li id="dash" runat="server">
+                        <a href="dash.aspx"><i class="clip-home-3"></i>
+                            <span class="title">Dashboard </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li id="leaves" runat="server">
+                        <a href="javascript:void(0)"><i class="clip-paperplane"></i>
+                            <span class="title">Leaves</span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li id="leaves1" runat="server">
+                                <a href="app_rej.aspx"><i class="clip-plus-circle-2"></i>
+                                    <span class="title">Approve / Reject </span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                            <li id="leaves2" runat="server">
+                                <a href="cancelappr.aspx"><i class="clip-minus-circle-2"></i>
+                                    <span class="title">Cancel Approved </span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="settings" runat="server">
+                        <a href="javascript:void(0)"><i class="clip-settings"></i>
+                            <span class="title">Settings</span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li id="settings1" runat="server">
+                                <a href="listuser.aspx"><i class="clip-user-2"></i>
+                                    <span class="title">User's</span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                            <li id="settings2" runat="server">
+                                <a href="leave_logs.aspx"><i class="clip-stackoverflow"></i>
+                                    <span class="title">Leave Status</span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li id="rpt" runat="server">
+                        <a href="javascript:void(0)"><i class="clip-bars"></i>
+                            <span class="title">Reports </span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li id="rpt1" runat="server">
+                                <a href="leavetaken.aspx"><i class="icon-file-text"></i>
+                                    <span class="title">Leave Taken</span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                            <li id="rpt2" runat="server">
+                                <a href="balleave.aspx"><i class="icon-file-text"></i>
+                                    <span class="title">Balance Leave</span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                            <li id="rpt3" runat="server">
+                                <a href="cfleave.aspx"><i class="icon-file-text"></i>
+                                    <span class="title">Carryforward</span>
+                                    <span class="selected"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end: MAIN NAVIGATION MENU -->
+            </div>
+            <!-- end: SIDEBAR -->
+        </div>
+        <!-- start: PAGE -->
+        <div class="main-content">
+            <!-- start: PANEL CONFIGURATION MODAL FORM -->
+            <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">Panel Configuration</h4>
+                        </div>
+                        <div class="modal-body">
+                            Here will be a configuration form
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+            <div class="container">
+                <!-- start: PAGE CONTENT -->
+                <form id="form1" runat="server">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </form>
+                <!-- end: PAGE CONTENT-->
+            </div>
+        </div>
+        <!-- end: PAGE -->
+    </div>
+    <!-- end: MAIN CONTAINER -->
+    <!-- start: FOOTER -->
+    <div class="footer clearfix">
+        <div class="footer-inner">
+            2015 &copy; <i class="clip-IE"></i>-Leave by <a href="http://summersoft.in/" target="_blank">summersoft pvt ltd.
+        </div>
+        <div class="footer-items">
+            <span class="go-top"><i class="clip-chevron-up"></i></span>
+        </div>
+    </div>
+    <!-- end: FOOTER -->
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+		<script src="../assets/plugins/respond.min.js" type="text/javascript"></script>
+		<script src="../assets/plugins/excanvas.min.js" type="text/javascript"></script>
+		<![endif]-->
+    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/blockUI/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="../assets/plugins/iCheck/jquery.icheck.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js" type="text/javascript"></script>
+    <script src="../assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js" type="text/javascript"></script>
+    <script src="../assets/js/main.js" type="text/javascript"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <%--<link href="../assets/plugins/select2/select2.css" rel="stylesheet" type="text/css" />--%>
+    <script src="../assets/plugins/jquery-inputlimiter/jquery.inputlimiter.1.3.1.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/fullcalendar/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+    <script src="../assets/plugins/autosize/jquery.autosize.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/select2/select2.min.js" type="text/javascript"></script>
+    <script src="../assets/js/form-elements.js" type="text/javascript"></script>
+    <script src="../assets/plugins/circliful/jquery.circliful.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/loader/blockui.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/loader/pace.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/loader/progressbar.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="../assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <script src="../assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../assets/js/changepasswordmd.js"></script>
+    <script src="../assets/js/updateprofile.js"></script>
+    <script src="../assets/plugins/select2/select2.min.js"></script>
+    <script src="../assets/plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/DataTables/media/js/DT_bootstrap.js"></script>
+    <script src="../assets/js/datatables_md_ed.js"></script>
+    <script src="../assets/plugins/jquery.pulsate/jquery.pulsate.min.js"></script>
+    <script src="../assets/plugins/highcharts/highcharts.js"></script>
+    <script src="../assets/plugins/highcharts/exporting.js"></script>
+    <script src="../assets/plugins/timeout/session_timeout.min.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var startdate, enddate;
+            Main.init();
+            updateAlerts();
+            TableData.init();
+            $('#lblop').hide();
+            highcharts();
+            calendar();
+            updateAlerts();
+            updateAlerts2();
+            //sessiontimeout();
+            inputlimit_add1();
+            inputlimit_add2();
+        });
+    </script>
+
+    <script type="text/javascript">
+        function cpassvali() {
+            //alert('im called user');
+            changepassval.init();
+        }
+    </script>
+    <script type="text/javascript">
+        $('#oldp').on('click', function () {
+            //alert($('#oldpwd_hr_txt').attr('type'));
+            if ($('#txt_oldpwd').attr('type') == "password") {
+                $("#txt_oldpwd").attr("type", "text");
+            }
+            else {
+                $("#txt_oldpwd").attr("type", "password");
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        $('#newp').on('click', function () {
+            //alert($('#oldpwd_hr_txt').attr('type'));
+            if ($('#txt_nwpwd').attr('type') == "password") {
+                $("#txt_nwpwd").attr("type", "text");
+            }
+            else {
+                $("#txt_nwpwd").attr("type", "password");
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        $('#cp').on('click', function () {
+            //alert($('#oldpwd_hr_txt').attr('type'));
+            if ($('#txt_conf_nwpwd').attr('type') == "password") {
+                $("#txt_conf_nwpwd").attr("type", "text");
+            }
+            else {
+                $("#txt_conf_nwpwd").attr("type", "password");
+            }
+        })
+    </script>
+    <script type="text/javascript">
+        function uprofilevali() {
+            //alert('im called user');
+            uprofileval.init();
+        }
+    </script>
+    <script type="text/javascript">
+        function chkoldpswd() {
+            $('#pulsate-regular').pulsate("destroy");
+            //alert('im called');
+            var oldp;
+            var data = {};
+            var userid = '<%= Session["user_id"] %>';
+            //alert(userid);
+            oldp = $('#txt_oldpwd').val();
+            //alert(oldp);
+            if (oldp.length > 0) {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    data: '{"userid":"' + userid + '","oldp":"' + oldp + '"}',
+                    url: "chg_pass.aspx/oldpchk",
+                    dataType: "json",
+                    success: function (data) {
+                        //alert(data.d);
+                        if (data.d == 1) {
+                            $('#lblop').hide();
+                            $('#pulsate-regular').pulsate("destroy");
+                            $('#pulsate-regular').hide();
+                            $('#btncp').prop('disabled', false);
+                        }
+                        else {
+                            $('#btncp').prop('disabled', true);
+                            $('#pulsate-regular').show();
+                            $('#lblop').show();
+                            $('#pulsate-regular').pulsate({
+                                color: '#C43C35', // set the color of the pulse
+                                reach: 20, // how far the pulse goes in px
+                                speed: 1000, // how long one pulse takes in ms
+                                pause: 0, // how long the pause between pulses is in ms
+                                glow: true, // if the glow should be shown too
+                                repeat: true, // will repeat forever if true, if given a number will repeat for that many times
+                                onHover: false // if true only pulsate if user hovers over the element
+                            });
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //alert("error datepick");
+                    }
+                });
+            }
+            else {
+
+                $('#pulsate-regular').pulsate("destroy");
+                $('#pulsate-regular').hide();
+                $('#lblop').hide();
+                $('#btncp').prop('disabled', false);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function highcharts() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: "{}",
+                url: "dash.aspx/highcharts",
+                dataType: "json",
+                success: function (data) {
+                    var cat = [], data1 = [], data2 = [], data3 = [], data4 = [], data5= [], data6 =[];
+                    for (var i = 0; i < data.d.length; i++) {
+                        cat.push(data.d[i].Name);
+                        data1.push(data.d[i].aleave);
+                        data2.push(data.d[i].sleave);
+                        data3.push(data.d[i].mleave);
+                        data4.push(data.d[i].m2leave);
+                        data5.push(data.d[i].pleave);
+                        data6.push(data.d[i].hleave);
+                    }
+                    $('#container').highcharts({
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Stacked leave chart'
+                        },
+                        xAxis: {
+                            categories: cat
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Total leaves available for the current year'
+                            },
+                            stackLabels: {
+                                enabled: false,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                                }
+                            }
+                        },
+                        legend: {
+                            align: 'right',
+                            x: -30,
+                            verticalAlign: 'top',
+                            y: 25,
+                            floating: true,
+                            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+                            borderColor: '#CCC',
+                            borderWidth: 1,
+                            shadow: false
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{point.x}</b><br/>',
+                            pointFormat: '{series.name}: {point.y}'
+                        },
+                        plotOptions: {
+                            column: {
+                                stacking: 'normal',
+                                dataLabels: {
+                                    enabled: false,
+                                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                                    style: {
+                                        textShadow: '0 0 3px black'
+                                    }
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Annual Leave',
+                            data: data1
+                        }, {
+                            name: 'Medical Leave',
+                            data: data2
+                        },
+                        {
+                            name: 'Marriage Leave',
+                            data: data3
+                        },
+                        {
+                            name: 'Maternity Leave',
+                            data: data4
+                        },
+                        {
+                            name: 'Paternity Leave',
+                            data: data5
+                        },
+                        {
+                            name: 'Hospitalization Leave',
+                            data: data6
+                        }]
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error notification badge");
+                }
+            });
+
+        }
+        setInterval(highcharts, 60000);
+    </script>
+
+    <script type="text/javascript">
+        function calendar() {
+            var data = {};
+            var rid = '<%= Session["region"] %>';
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: '{"rid":"' + rid + '"}',
+                url: "dash.aspx/GetEvents",
+                dataType: "json",
+                success: function (data) {
+                    //alert(data.d.length);
+                    var event1 = [];
+                    for (var i = 0; i < data.d.length; i++) {
+                        //alert(data.d[i].EventName);
+                        //alert(data.d[i].EventDate);
+                        //alert(data.d[i].color);
+                        event1.push({
+                            "title": data.d[i].EventName,
+                            "start": data.d[i].EventDate,
+                            "color": data.d[i].color
+                        });
+                    }
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear();
+
+                    if (dd < 10) {
+                        dd = '0' + dd
+                    }
+
+                    if (mm < 10) {
+                        mm = '0' + mm
+                    }
+                    today = yyyy + '-' + mm + '-' + dd;
+
+                    /* initialize the calendar
+                    -----------------------------------------------------------------*/
+                    $('#calendar').fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,basicWeek,basicDay'
+                        },
+                        defaultDate: today,
+                        editable: true,
+                        droppable: true, // this allows things to be dropped onto the calendar
+                        eventLimit: true, // allow "more" link when too many events
+                        events: event1,
+                        eventClick: function (event) {
+                            $('#mbody').html(event.title);
+                            $('#mbody').css('color', event.color);
+                            $('#event-management').modal('show');
+                        }
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error calender");
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function updateAlerts() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: "{}",
+                url: "dash.aspx/updatealerts",
+                dataType: "json",
+                success: function (data) {
+                    if (data.d > 0) {
+                        $('#info').text(data.d);
+                    }
+                    else {
+                        $('#info').text("");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error notification badge");
+                }
+            });
+        }
+        setInterval(updateAlerts, 10000); // 10 seconds
+    </script>
+
+    <script type="text/javascript">
+        function sessiontimeout() {
+            $.sessionTimeout({
+                heading: 'h5',
+                title: 'Session Timeout',
+                message: 'Your session is about to expire. Do you want to stay connected?',
+                ignoreUserActivity: true,
+                warnAfter: 90000, //1.5 minutes
+                redirAfter: 100000, // 1.6 minute
+                keepAliveUrl: '/',
+                redirUrl: '../sessiontimeout.aspx',
+                logoutUrl: '../Logout.aspx'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function updateAlerts2() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: "{}",
+                url: "dash.aspx/updatealerts2",
+                dataType: "json",
+                success: function (data) {
+                    if (data.d > 0) {
+                        $('#info1').text(data.d);
+                    }
+                    else {
+                        $('#info1').text("");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    //alert("error notification badge");
+                }
+            });
+        }
+        setInterval(updateAlerts2, 10000); // 10 seconds
+    </script>
+
+    <%--To limit no: of characters in Reason--%>
+    <script type="text/javascript">
+        function inputlimit() {
+            $('#txtbreason').inputlimiter({
+                limit: 100,
+                remText: 'You only have %n character%s remaining...',
+                remFullText: 'Stop typing! You\'re not allowed any more characters!',
+                limitText: 'You\'re allowed to input %n character%s into this field.'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function inputlimit_add1() {
+            $('#txtadd1').inputlimiter({
+                limit: 20,
+                remText: 'You only have %n character%s remaining...',
+                remFullText: 'Stop typing! You\'re not allowed any more characters!',
+                limitText: 'You\'re allowed to input %n character%s into this field.'
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function inputlimit_add2() {
+            $('#txtadd2').inputlimiter({
+                limit: 20,
+                remText: 'You only have %n character%s remaining...',
+                remFullText: 'Stop typing! You\'re not allowed any more characters!',
+                limitText: 'You\'re allowed to input %n character%s into this field.'
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function load_hide() {
+            $('#loader').hide();
+        }
+    </script>
+
+</body>
+<!-- end: BODY -->
+</html>
+

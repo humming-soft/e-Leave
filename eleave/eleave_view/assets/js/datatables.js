@@ -18,11 +18,11 @@
                 [1, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_users_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -44,11 +44,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_userleaves_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -70,11 +70,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#status_hr_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -98,11 +98,11 @@
                 [1, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_forward_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -124,11 +124,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_cancel_hr_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -150,11 +150,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_cflist_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -177,11 +177,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_ltaken_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -203,11 +203,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_bal_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -230,11 +230,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_cflistr_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -256,11 +256,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_log_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -282,11 +282,11 @@
                 [0, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#grd_leave_dwnld_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input
@@ -310,11 +310,11 @@
                 [1, 'asc']
             ],
             "aLengthMenu": [
-                [5, 10, 15, 20, -1],
-                [5, 10, 15, 20, "All"] // change per page values here
+                [3,5, 10, 15, 20, -1],
+                [3,5, 10, 15, 20, "All"] // change per page values here
             ],
             // set the initial value
-            "iDisplayLength": 10,
+            "iDisplayLength": 3,
         });
         $('#approved_hr_wrapper .dataTables_filter input').addClass("form-control input-sm").attr("placeholder", "Search");
         // modify table search input

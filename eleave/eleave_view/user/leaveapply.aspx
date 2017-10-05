@@ -353,6 +353,11 @@
                                     <asp:Label ID="lblio" runat="server" ClientIDMode="Static" ForeColor="Black"></asp:Label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div id="pulsate-regulario1" style="padding: 5px; width: 202px; display: none">
+                                    <asp:Label ID="lblio1" runat="server" ClientIDMode="Static" ForeColor="Black"></asp:Label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">

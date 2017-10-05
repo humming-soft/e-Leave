@@ -552,8 +552,9 @@
     <script type="text/javascript">
         function hideshowfup() {
             var sdate = "+2d";
-            var yr = new Date().getFullYear() + '';
-            edate = "31-12-" + yr;
+            var year = new Date().getFullYear() + '';
+            var y = parseInt(year) + 1;
+            edate = "31-12-" + y;
             $('#dateranges').hide();
             $('#txtdate').val("");
             $('#txtsdate').val("");
@@ -570,8 +571,9 @@
                 $("#txtdate").datepicker('remove');
                 $("#ddlper option[value='2']").removeAttr('disabled');
                 startdate = "-7d";
-                var yeara = new Date().getFullYear() + '';
-                enddate = "31-12-" + yeara;
+                var year = new Date().getFullYear() + '';
+                var y = parseInt(year) + 1;
+                enddate = "31-12-" + y;
                 datepick();
 
             }
@@ -607,7 +609,8 @@
                 $("#ddlper option[value='2']").attr('disabled', 'disabled');
                 startdate = "+2d";
                 var year = new Date().getFullYear() + '';
-                enddate = "31-12-" + year;
+                var y = parseInt(year) + 1;
+                enddate = "31-12-" + y;
                 datepick();
             }
             else if (chk == 0) { // select
@@ -677,7 +680,8 @@
                 $("#ddlper option[value='2']").removeAttr('disabled');
                 startdate = "+2d";
                 var year = new Date().getFullYear() + '';
-                enddate = "31-12-" + year;
+                var y = parseInt(year) + 1;
+                enddate = "31-12-" + y;
                 datepick();
             }
 }
@@ -878,17 +882,40 @@
     </script>
     <script type="text/javascript">
         function in_or_out() {
-            var userid, typ, per, ds, sd, ed, dv1, dv2, pert, region, reg;
+            var userid, typ, per, ds, sd, ed, dv1, dv2, pert, region, reg,ds1;
             userid = '<%= Session["user_id"] %>';
             region = '<%= Session["region"] %>';
             typ = $('#ddlltype option:selected').val();
             per = $('#ddlper option:selected').val();
+            ds1 = $('#txtdate').val();
             $('#lblio').hide();
             $('#pulsate-regulario').pulsate("destroy");
             $('#pulsate-regulario').hide();
+            var year = new Date().getFullYear() + '';
+            var y = parseInt(year) + 1;
             //alert(per);
-            var data = {};
+            var a = {};
+            var leave1 = {};
+            var yearc = 0;
+            var yearn = 0;
 
+            a = ds1.split(',');
+            $.each(a, function (key, value) {
+                leave1 = value.split('-');
+                if (leave1[2] == year) {
+                    yearc = yearc + 1;
+                }
+                if (leave1[2] == y) {
+                    yearn = yearn + 1;
+                }
+            });
+            if (per == 2) {
+                yearc = yearc / 2;
+                yearn = yearn /2 ;
+            }
+            //alert(yearc);
+            //alert(yearn);
+            var data = {};
             if (typ != "" && per != "") {
                 if (typ == 1 || typ == 2 || typ == 3 || typ == 7 || typ == 8) {
                     ds = $('#txtdate').val();
@@ -904,7 +931,7 @@
                     $.ajax({
                         type: "POST",
                         contentType: "application/json",
-                        data: '{"userid":"' + userid + '","typ":"' + typ + '","per":"' + per + '","ds":"' + ds + '"}',
+                        data: '{"userid":"' + userid + '","typ":"' + typ + '","per":"' + per + '","ds":"' + ds + '","thisy":"' + yearc + '","nexty":"' + yearn + '"}',
                         url: "leaveapply.aspx/in_out_others",
                         dataType: "json",
                         success: function (data) {
@@ -918,6 +945,21 @@
                             else if (data.d == 3) {
                                 $('#pulsate-regulario').show();
                                 $('#lblio').html('Leave Count is insufficiant');
+                                $('#lblio').show();
+                                $('#btnreq').prop("disabled", true);
+                                $('#pulsate-regulario').pulsate({
+                                    color: '#C43C35', // set the color of the pulse
+                                    reach: 20, // how far the pulse goes in px
+                                    speed: 1000, // how long one pulse takes in ms
+                                    pause: 0, // how long the pause between pulses is in ms
+                                    glow: true, // if the glow should be shown too
+                                    repeat: true, // will repeat forever if true, if given a number will repeat for that many times
+                                    onHover: false // if true only pulsate if user hovers over the element
+                                });
+                            }
+                            else if (data.d == 8) {
+                                $('#pulsate-regulario').show();
+                                $('#lblio').html('Leave('+ y +') Count is insufficiant');
                                 $('#lblio').show();
                                 $('#btnreq').prop("disabled", true);
                                 $('#pulsate-regulario').pulsate({

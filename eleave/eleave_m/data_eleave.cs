@@ -340,7 +340,7 @@ namespace eleave_m
             }
         }
 
-        public int insert_leave(int userid, int ltype, string dates, int period, string reason, double rdays, string jobc, string contact)
+        public int insert_leave(int userid, int ltype, string dates, int period, string reason, double rdays,double rdays_nxt, string jobc, string contact)
         {
             try
             {
@@ -353,6 +353,7 @@ namespace eleave_m
                 cmd.Parameters.AddWithValue("@period", period);
                 cmd.Parameters.AddWithValue("@reason", reason);
                 cmd.Parameters.AddWithValue("@rdays", rdays);
+                cmd.Parameters.AddWithValue("@rdays_nxt", rdays_nxt);
                 cmd.Parameters.AddWithValue("@jobc", jobc);
                 cmd.Parameters.AddWithValue("@contact", contact);
                 SqlParameter outparam = new SqlParameter();
@@ -1671,7 +1672,7 @@ namespace eleave_m
             }
         }
 
-        public int check_in_out(int userid, int ltype, double rdays)
+        public int check_in_out(int userid, int ltype, double rdays, double thisy, double nexty, int nextystatus)
         {
             try
             {
@@ -1680,7 +1681,10 @@ namespace eleave_m
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@userid", userid);
                 cmd.Parameters.AddWithValue("@ltype", ltype);
-                cmd.Parameters.AddWithValue("@rdays", rdays);
+                cmd.Parameters.AddWithValue("@rdays", thisy);
+                cmd.Parameters.AddWithValue("@thisy", thisy);
+                cmd.Parameters.AddWithValue("@nexty", nexty);
+                cmd.Parameters.AddWithValue("@nextystat", nextystatus);
                 SqlParameter outparam = new SqlParameter();
                 outparam.ParameterName = "@flag";
                 outparam.Direction = ParameterDirection.InputOutput;

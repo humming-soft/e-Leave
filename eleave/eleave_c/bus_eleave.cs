@@ -46,7 +46,10 @@ namespace eleave_c
         public string email { get; set; }
         public string role { get; set; }
   //      public string region { get; set; }
-
+        public double thisy { get; set; }
+        public double nexty { get; set; }
+        public int nextystatus { get; set; }
+        public double rdays_next { get; set; }
         public int check_login()
         {
             return data.check_login(user_name, password);
@@ -124,7 +127,7 @@ namespace eleave_c
 
         public int insert_leave()
         {
-            return data.insert_leave(userid, ltype, dates, period, reason, rdays, jobc, contact);
+            return data.insert_leave(userid, ltype, dates, period, reason, rdays,rdays_next, jobc, contact);
         }
 
         public int insert_oleave()
@@ -385,7 +388,7 @@ namespace eleave_c
 
         public int check_in_out()
         {
-            return data.check_in_out(userid,ltype,rdays);
+            return data.check_in_out(userid,ltype,rdays,thisy ,nexty,nextystatus);
         }
 
         public int clear_holidays()

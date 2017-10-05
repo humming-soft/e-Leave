@@ -96,6 +96,7 @@ namespace eleave_view.user
                     toemail = toemail + dt.Rows[i]["email"].ToString();
                     toemail += (i < dt.Rows.Count - 1) ? ";" : string.Empty;
                 }
+                
             }
             else
             {
@@ -387,7 +388,8 @@ namespace eleave_view.user
                                 if (r1 == 1)
                                 {
                                     // send email
-                                    fetch_mail_details();
+                                   fetch_mail_details();
+                                   
                                     mailbody = "<table  border='1' cellpadding='0' cellspacing='0' style='width: 750px; border-color: black;'><tr><td colspan='9'><br>&nbsp &nbspDear Sir / Madam,<br /><br />&nbsp&nbsp&nbsp&nbsp&nbspLeave application has been submitted by <b>" + Session["name"].ToString() + "</b> on <b>" + DateTime.Now.ToString("dd/MM/yyyy") + ".</b> The details are as follows.<br /><br /></td></tr><tr style='font-weight: 700;'></tr><tr><td colspan='9'><br/><p></p><p> &nbsp&nbsp&nbspName:   " + Session["name"].ToString() + "</p><p>&nbsp&nbsp&nbspDepartment:   " + Session["dep"].ToString() + "</p><p>&nbsp&nbsp&nbspDesignation:   " + Session["des"].ToString() + " </p><p>&nbsp&nbsp&nbspLeave Type:   " + ddlltype.SelectedItem.ToString() + " </p><p>&nbsp&nbsp&nbspPeriod:   " + ddlper.SelectedItem.ToString() + " </p><p>&nbsp&nbsp&nbspReason:   " + txtreason.Text.Trim() + " </p><p>&nbsp&nbsp&nbspclick<a href=" + url2 + "> here </a>to login into the application (UOA)</p><p>&nbsp&nbsp&nbspclick<a href=" + url + "> here </a>to login into the application</p><br/></td></tr><tr></tr><td colspan='9' style='font-weight: bold' align='right'><br /><br />Regards,<br />Team e-leave</td></tr><tr><td align='center'><p style='color:blue;'> This is a system generated response. Please do not respond to this email id.</p></td></tr></table>";
                                     bool check = SendWebMail(toemail, "Leave Application Notification", mailbody, "", "", "info@hummingsoft.com.my");
                                     if (check == true)
@@ -487,8 +489,10 @@ namespace eleave_view.user
                         bus.period = int.Parse(ddlper.SelectedValue.ToString());
                         bus.reason = txtreason.Text.Trim();
                         bus.rdays = getcount();
+                        bus.rdays_next = getcount_nxt();
                         bus.jobc = ddljobc.SelectedItem.ToString();
                         bus.contact = txtphone.Text.Trim();
+                      
                         // check here the applied leaves exceeds or not (annual, marriage)
                         //int inter = bus.check_avail();
                         //if (inter == 1)
@@ -506,6 +510,7 @@ namespace eleave_view.user
                         {
                             // send email
                             fetch_mail_details();
+                           // toemail = "ancy@hummingsoft.com.my";
                             mailbody = "<table  border='1' cellpadding='0' cellspacing='0' style='width: 750px; border-color: black;'><tr><td colspan='9'><br>&nbsp &nbspDear Sir / Madam,<br /><br />&nbsp&nbsp&nbsp&nbsp&nbspLeave application has been submitted by <b>" + Session["name"].ToString() + "</b> on <b>" + DateTime.Now.ToString("dd/MM/yyyy") + ".</b> The details are as follows.<br /><br /></td></tr><tr style='font-weight: 700;'></tr><tr><td colspan='9'><br/><p></p><p> &nbsp&nbsp&nbspName:   " + Session["name"].ToString() + "</p><p>&nbsp&nbsp&nbspDepartment:   " + Session["dep"].ToString() + "</p><p>&nbsp&nbsp&nbspDesignation:   " + Session["des"].ToString() + " </p><p>&nbsp&nbsp&nbspLeave Type:   " + ddlltype.SelectedItem.ToString() + " </p><p>&nbsp&nbsp&nbspPeriod:   " + ddlper.SelectedItem.ToString() + " </p><p>&nbsp&nbsp&nbspReason:   " + txtreason.Text.Trim() + " </p><p>&nbsp&nbsp&nbspclick<a href=" + url2 + "> here </a>to login into the application (UOA)</p><p>&nbsp&nbsp&nbspclick<a href=" + url + "> here </a>to login into the application</p><br/></td></tr><tr></tr><td colspan='9' style='font-weight: bold' align='right'><br /><br />Regards,<br />Team e-leave</td></tr><tr><td align='center'><p style='color:blue;'> This is a system generated response. Please do not respond to this email id.</p></td></tr></table>";
                             bool check = SendWebMail(toemail, "Leave Application Notification", mailbody, "", "", "info@hummingsoft.com.my");
                             if (check == true)
@@ -554,23 +559,46 @@ namespace eleave_view.user
         {
             double ct = 0;
             double hf = 0.5;
+            double ct1 = 0;
+            double ct2 = 0;
+            string com = ",";
             string a;
+            int year =int.Parse( DateTime.Now.Year.ToString());
+            int nxtyear=year+1;
             if (int.Parse(ddlper.SelectedValue.ToString()) == 1 && txtdate.Text.Trim() != "")
             {
                 a = txtdate.Text.Trim();
                 string[] values = a.Split(',');
-                for (int i = 0; i < values.Length; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ct = ct + 1;
+                    string[] tokens = values[j].Split('-');
+                    if (int.Parse(tokens[2]) == nxtyear)
+                    {
+                        ct1 = ct1 + 1;
+                    }
+                    if (int.Parse(tokens[2]) == year)
+                    {
+                        ct = ct + 1;
+                    }
                 }
             }
+               
             else if (int.Parse(ddlper.SelectedValue.ToString()) == 2 && txtdate.Text.Trim() != "")
             {
                 a = txtdate.Text.Trim();
                 string[] values = a.Split(',');
                 for (int i = 0; i < values.Length; i++)
                 {
-                    ct = ct + hf;
+                    string[] tokens = values[i].Split('-');
+                    if (int.Parse(tokens[2]) == nxtyear)
+                    {
+                        ct1 = ct + hf;
+                    }
+                    if (int.Parse(tokens[2]) == year)
+                    {
+                        ct = ct + hf;
+                    }
+                    
                 }
             }
             else
@@ -580,7 +608,60 @@ namespace eleave_view.user
 
             return ct;
         }
+        protected double getcount_nxt()
+        {
+            double ct = 0;
+            double hf = 0.5;
+            double ct1 = 0;
+            double ct2 = 0;
+            string com = ",";
+            string a;
+            int year =int.Parse( DateTime.Now.Year.ToString());
+            int nxtyear=year+1;
+            if (int.Parse(ddlper.SelectedValue.ToString()) == 1 && txtdate.Text.Trim() != "")
+            {
+                a = txtdate.Text.Trim();
+                string[] values = a.Split(',');
+                for (int j = 0; j < values.Length; j++)
+                {
+                    string[] tokens = values[j].Split('-');
+                    if (int.Parse(tokens[2]) == nxtyear)
+                    {
+                        ct1 = ct1 + 1;
+                    }
+                    if (int.Parse(tokens[2]) == year)
+                    {
+                        ct = ct + 1;
+                    }
+                }
+            }
+               
+            else if (int.Parse(ddlper.SelectedValue.ToString()) == 2 && txtdate.Text.Trim() != "")
+            {
+                a = txtdate.Text.Trim();
+                string[] values = a.Split(',');
+                for (int i = 0; i < values.Length; i++)
+                {
+                    string[] tokens = values[i].Split('-');
+                    if (int.Parse(tokens[2]) == nxtyear)
+                    {
+                        ct1 = ct + hf;
+                    }
+                    if (int.Parse(tokens[2]) == year)
+                    {
+                        ct = ct + hf;
+                    }
+                    
+                }
+            }
+            else
+            {
+                ct1 = 0;
+            }
 
+            return ct1;
+        }
+        
         protected void clearfeilds()
         {
             txtreason.Text = "";
@@ -738,12 +819,22 @@ namespace eleave_view.user
 
         [WebMethod]
 
-        public static int in_out_others(int userid, int typ, int per, string ds)
+        public static int in_out_others(int userid, int typ, int per, string ds, string thisy, string nexty)
         {
             bus_eleave bus2 = new bus_eleave();
             bus2.userid = userid;
             bus2.ltype = typ;
             bus2.rdays = getc(per, ds);
+            if (double.Parse(nexty) > 0.0)
+            {
+                bus2.nextystatus = 1;
+            }
+            else
+            {
+                bus2.nextystatus = 0;
+            }
+            bus2.nexty = double.Parse(nexty);
+            bus2.thisy = double.Parse(thisy);
             int res1 = bus2.check_in_out();
             return res1;
         }

@@ -139,6 +139,15 @@ namespace eleave_view.user {
         protected global::System.Web.UI.WebControls.Label lblio;
         
         /// <summary>
+        /// lblio1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblio1;
+        
+        /// <summary>
         /// btnreq control.
         /// </summary>
         /// <remarks>

@@ -667,8 +667,9 @@
         function hideshowfup_hr() {
             //alert('im called');
             var sdate = "+2d";
-            var yr = new Date().getFullYear() + '';
-            edate = "31-12-" + yr;
+            var year = new Date().getFullYear() + '';
+            var y = parseInt(year) + 1;
+            edate = "31-12-" + y;
             $('#dateranges').hide();
             $('#txtsdate').val("");
             $('#txtedate').val("");
@@ -685,7 +686,8 @@
             $("#txtdate_hr").datepicker('remove');
             startdate = "-7d";
             var year = new Date().getFullYear() + '';
-            enddate = "31-12-" + year;
+            var y = parseInt(year) + 1;
+            enddate = "31-12-" + y;
             datepick();
         }
         else if (chk == 2) {
@@ -707,7 +709,8 @@
             $("#txtdate_hr").datepicker('remove');
             startdate = "+2d";
             var year = new Date().getFullYear() + '';
-            enddate = "31-12-" + year;
+            var y = parseInt(year) + 1;
+            enddate = "31-12-" + y;
             datepick();
             }
         else if (chk == 8) {
@@ -787,7 +790,8 @@
             $("#txtdate_hr").datepicker('remove');
             startdate = "+2d";
             var year = new Date().getFullYear() + '';
-            enddate = "31-12-" + year;
+            var y = parseInt(year) + 1;
+            enddate = "31-12-" + y;
             datepick();
             }
             }

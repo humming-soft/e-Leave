@@ -116,8 +116,10 @@
                 <asp:BoundField DataField="name" HeaderText="Name" />
                 <asp:BoundField DataField="depname" HeaderText="Department" />
                 <asp:BoundField DataField="desig" HeaderText="Designation" />
-                <asp:BoundField DataField="ltype" HeaderText="Leave Type" />
+                <asp:BoundField DataField="ltype" HeaderText="Type" />
+                 <asp:BoundField DataField="days_reqs" HeaderText="No Days" />
                 <asp:BoundField DataField="dates" HeaderText="Dates Applied" >
+               
                 <ItemStyle CssClass="WordWrap1" />
                 </asp:BoundField>
                 <asp:BoundField DataField="period" HeaderText="Period" />

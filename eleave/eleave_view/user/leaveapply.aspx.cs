@@ -511,6 +511,7 @@ namespace eleave_view.user
                         {
                             // send email
                             fetch_mail_details();
+                            //string toomail = "ancy@hummingsoft.com.my";
                            // mailbody = "<table  border='1' cellpadding='0' cellspacing='0' style='width: 750px; border-color: black;'><tr><td colspan='9'><br>Dear Sir / Madam,<br /><br />Leave application has been submitted by <b>" + Session["name"].ToString() + "</b> on <b>" + DateTime.Now.ToString("dd/MM/yyyy") + ".</b> The details are as follows.<br /><br /></td></tr><tr style='font-weight: 700;'></tr><tr><td colspan='9'><br/><p></p><p> Name:   " + Session["name"].ToString() + "</p><p>Department:   " + Session["dep"].ToString() + "</p><p>Designation:   " + Session["des"].ToString() + " </p><p>Leave Type:   " + ddlltype.SelectedItem.ToString() + " </p><p>Period:   " + ddlper.SelectedItem.ToString() + " </p><p>Reason:   " + txtreason.Text.Trim() + " </p><p>click<a href=" + url2 + "> here </a>to login into the application (UOA)</p><p>click<a href=" + url + "> here </a>to login into the application</p><br/></td></tr><tr></tr><td colspan='9' style='font-weight: bold' align='right'><br /><br />Regards,<br />Team e-leave</td></tr><tr><td align='center'><p style='color:blue;'> This is a system generated response. Please do not respond to this email id.</p></td></tr></table>";
                             mailbody = "<table style='width: 750px; border-color: black;' border='1' cellspacing='0' cellpadding='0'><tbody><tr><td colspan='9'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dear Sir / Madam,<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Leave application has been submitted by <strong>" +Session["name"].ToString() + "</strong> on <strong>" + DateTime.Now.ToString("dd/MM/yyyy") + ".</strong> The details are as follows.<br /><br /></td></tr><tr><td colspan='9'><p>&nbsp;&nbsp;&nbsp;Name: " + Session["name"].ToString() + "</p><p>&nbsp;&nbsp;&nbsp;Department: " + Session["dep"].ToString() + "</p><p>&nbsp;&nbsp;&nbsp;Designation: " + Session["des"].ToString() + "</p><p>&nbsp;&nbsp;&nbsp;Leave Type: " + ddlltype.SelectedItem.ToString() + "</p><p>&nbsp;&nbsp;&nbsp;Period: " + ddlper.SelectedItem.ToString() + "</p><p>&nbsp;&nbsp;&nbsp;Reason: " + txtreason.Text.Trim() + "</p><p>&nbsp;&nbsp;&nbsp;click<a href="+ url2 +"> here </a>to login into the application (UOA)</p><p>&nbsp;&nbsp;&nbsp;click<a href="+ url +"> here </a>to login into the application</p></td></tr><tr><td align='center'><p style='color: blue;'>This is a system generated response. Please do not respond to this email id.</p></td></tr></tbody></table><p><br /><br />&nbsp;&nbsp;&nbsp;Regards,<br />&nbsp;&nbsp;&nbsp;Team e-leave</p>";
                             bool check = SendWebMail(toemail, "Leave Application Notification", mailbody, "", "", "info@hummingsoft.com.my");
@@ -733,10 +734,12 @@ namespace eleave_view.user
             msg.BodyFormat = MailFormat.Html;
             try
             {
+
                 //SmtpMail.SmtpServer = "175.143.44.165";
                 //SmtpMail.SmtpServer = "192.168.1.4"; // change the ip address to this when hosting in server
                 SmtpMail.SmtpServer = "webmail.hummingsoft.com.my";
                 SmtpMail.Send(msg);
+
                 flg = true;
             }
             catch (Exception)
